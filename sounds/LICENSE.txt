@@ -1,0 +1,45 @@
+Kenney Sound Effects Collection - Combined CC0 License
+
+This unified license covers the following sound effect packages:
+1. Interface Sounds (1.0) - Created: 11-02-2020
+2. UI SFX Set
+3. Digital Audio
+4. Impact Sounds (1.0) - Created: 19-12-2019
+
+--------------------------------------------------
+
+License: Creative Commons Zero (CC0 1.0 Universal)
+Official Deed: https://creativecommons.org/publicdomain/zero/1.0/
+Legal Code: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+
+TERMS OF USE:
+• You may use these assets in personal, educational and commercial projects
+• No attribution is required (public domain dedication)
+• Modification and redistribution permitted
+• Assets provided "as is" without warranties
+
+ATTRIBUTION (VOLUNTARY):
+While not mandatory, crediting is appreciated:
+"Sound effects by Kenney (www.kenney.nl)"
+
+--------------------------------------------------
+
+Creator/Distributor:
+Kenney Vleugels
+https://www.kenney.nl
+
+Support the Creator:
+• Donate: http://support.kenney.nl
+• Patreon: http://patreon.com/kenney/
+• Asset Requests: http://request.kenney.nl
+
+Stay Updated:
+Twitter: @KenneyNL | https://twitter.com/KenneyNL
+
+--------------------------------------------------
+
+This unified license replaces the following individual license files:
+- License.txt (Interface Sounds)
+- License.txt (UI SFX Set)
+- License.txt (Digital Audio)
+- License.txt (Impact Sounds)
