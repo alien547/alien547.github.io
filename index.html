@@ -9,286 +9,128 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-        body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            color: #fff;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            color: #e6e6e6;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             padding: 20px;
-            overflow-x: hidden;
+            overflow: hidden;
         }
-        header {
-            text-align: center;
-            margin: 20px 0;
-            width: 100%;
-        }
-        h1 {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px #00eeff, 0 0 20px #00eeff;
-            letter-spacing: 2px;
-        }
-        .subtitle {
-            font-size: 1.2rem;
-            color: #a0d2eb;
-            margin-bottom: 20px;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            width: 100%;
-            max-width: 1200px;
-        }
+        
         .game-container {
             position: relative;
-            width: 100%;
-            max-width: 800px;
-            border-radius: 12px;
+            width: 800px;
+            height: 600px;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            border: 3px solid #4361ee;
         }
+        
         canvas {
             background: #0d1b2a;
             display: block;
             width: 100%;
+            height: 100%;
         }
-        .controls {
-            background: rgba(13, 27, 42, 0.8);
-            padding: 15px;
-            border-radius: 10px;
-            width: 100%;
-            max-width: 800px;
-            margin-top: 10px;
-        }
-        .controls h2 {
+        
+        .game-title {
             text-align: center;
-            margin-bottom: 15px;
-            color: #4cc9f0;
+            margin-bottom: 20px;
+            width: 800px;
         }
-        .key-row {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 15px;
-        }
-        .key {
-            background: #1b263b;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-weight: bold;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-width: 100px;
-        }
-        .key kbd {
-            font-size: 1.8rem;
-            background: #415a77;
-            padding: 5px 15px;
-            border-radius: 5px;
-            margin-bottom: 8px;
-        }
-        .key span {
-            font-size: 0.9rem;
-            color: #e0e1dd;
-            text-align: center;
-        }
-        .info-panel {
-            display: flex;
-            justify-content: space-between;
-            background: rgba(26, 35, 56, 0.7);
-            padding: 15px;
-            border-radius: 10px;
-            width: 100%;
-            max-width: 800px;
-            margin-top: 20px;
-        }
-        .info-card {
-            background: #1b263b;
-            padding: 15px;
-            border-radius: 8px;
-            flex: 1;
-            margin: 0 10px;
-            text-align: center;
-        }
-        .info-card h3 {
-            color: #4cc9f0;
+        
+        .title {
+            font-size: 3rem;
             margin-bottom: 10px;
+            text-shadow: 0 0 12px #00eeff, 0 0 24px #00eeff;
+            letter-spacing: 3px;
+            background: linear-gradient(90deg, #4cc9f0, #4361ee, #f72585);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
         }
-        .info-card p {
-            line-height: 1.6;
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #a0d2eb;
+            margin-bottom: 5px;
         }
-        .status-bar {
-            display: flex;
-            justify-content: space-around;
-            width: 100%;
-            max-width: 800px;
-            margin-top: 15px;
-            padding: 10px;
-            background: rgba(26, 35, 56, 0.7);
-            border-radius: 8px;
-        }
-        .status-item {
+        
+        .instructions {
+            background: rgba(13, 27, 42, 0.8);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            width: 800px;
             text-align: center;
         }
-        .status-value {
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: #4cc9f0;
+        
+        .instructions p {
+            margin: 8px 0;
+            color: #e0e1dd;
+            font-size: 1.1rem;
         }
-        .game-buttons {
-            display: flex;
-            gap: 15px;
+        
+        .footer {
             margin-top: 20px;
-        }
-        .game-btn {
-            background: #4361ee;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-        .game-btn:hover {
-            background: #4895ef;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-        }
-        .game-btn:active {
-            transform: translateY(1px);
-        }
-        .game-btn.pause {
-            background: #f72585;
-        }
-        .game-btn.mute {
-            background: #7209b7;
-        }
-        footer {
-            margin-top: 30px;
             text-align: center;
             color: #778da9;
             font-size: 0.9rem;
             width: 100%;
-        }
-        @media (max-width: 768px) {
-            .key-row {
-                flex-wrap: wrap;
-            }
-            .info-panel {
-                flex-direction: column;
-                gap: 15px;
-            }
+            padding: 10px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>外星人入侵</h1>
-        <div class="subtitle">Python PyGame 到 JavaScript 的完美转换</div>
-    </header>
-    
-    <div class="container">
-        <div class="game-container">
-            <canvas id="gameCanvas" width="800" height="600"></canvas>
-        </div>
-        
-        <div class="status-bar">
-            <div class="status-item">
-                <div>得分</div>
-                <div class="status-value" id="score">0</div>
-            </div>
-            <div class="status-item">
-                <div>最高分</div>
-                <div class="status-value" id="highScore">0</div>
-            </div>
-            <div class="status-item">
-                <div>关卡</div>
-                <div class="status-value" id="level">1</div>
-            </div>
-            <div class="status-item">
-                <div>生命</div>
-                <div class="status-value" id="lives">3</div>
-            </div>
-        </div>
-        
-        <div class="game-buttons">
-            <button class="game-btn start">开始游戏</button>
-            <button class="game-btn pause">暂停(P)</button>
-            <button class="game-btn mute">静音(M)</button>
-        </div>
-        
-        <div class="controls">
-            <h2>游戏控制</h2>
-            <div class="key-row">
-                <div class="key">
-                    <kbd>W</kbd>
-                    <span>向上移动</span>
-                </div>
-                <div class="key">
-                    <kbd>A</kbd>
-                    <span>向左移动</span>
-                </div>
-                <div class="key">
-                    <kbd>S</kbd>
-                    <span>向下移动</span>
-                </div>
-                <div class="key">
-                    <kbd>D</kbd>
-                    <span>向右移动</span>
-                </div>
-            </div>
-            <div class="key-row">
-                <div class="key">
-                    <kbd>SPACE</kbd>
-                    <span>发射子弹</span>
-                </div>
-                <div class="key">
-                    <kbd>P</kbd>
-                    <span>暂停游戏</span>
-                </div>
-                <div class="key">
-                    <kbd>M</kbd>
-                    <span>静音/取消</span>
-                </div>
-                <div class="key">
-                    <kbd>ESC</kbd>
-                    <span>退出游戏</span>
-                </div>
-            </div>
-        </div>
-        
-        <div class="info-panel">
-            <div class="info-card">
-                <h3>关于此项目</h3>
-                <p>这是一个将Python PyGame游戏完整转换为JavaScript/Canvas的项目。所有游戏逻辑都保留，包括飞船控制、敌人AI、碰撞检测和存档系统。</p>
-            </div>
-            <div class="info-card">
-                <h3>技术实现</h3>
-                <p>使用HTML5 Canvas渲染，JavaScript处理游戏逻辑，Web Audio API播放音效，localStorage保存游戏进度。</p>
-            </div>
-            <div class="info-card">
-                <h3>部署能力</h3>
-                <p>游戏完全静态，可直接部署到GitHub Pages或任何静态托管服务。无需服务器支持。</p>
-            </div>
-        </div>
+    <div class="game-title">
+        <h1 class="title">外星人入侵</h1>
+        <div class="subtitle">PyGame到JavaScript的完美转换 | 100%保留原版设计</div>
     </div>
     
-    <footer>
-        <p>PyGame到JavaScript转换演示 | 可在GitHub Pages部署的完整游戏</p>
-    </footer>
+    <div class="game-container">
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+    </div>
+    
+    <div class="instructions">
+        <p>方向键移动, 空格射击, M静音, P暂停, ESC退出</p>
+        <p>每过一关会自动存档 | 游戏数据保存在本地</p>
+    </div>
+    
+    <div class="footer">
+        <p>PyGame到JavaScript转换演示 | 可在GitHub Pages部署的完整游戏 | 保留原版设计和所有功能</p>
+    </div>
 
     <script>
-        // 游戏主类
+        // 资源路径
+        const RESOURCES = {
+            images: {
+                ship: 'images/ship.png',
+                alien: 'images/alien.png',
+                alien_boss: 'images/alien_boss.png'
+            },
+            sounds: {
+                explosion: 'sounds/explosion.ogg',
+                clicked_button: 'sounds/clicked_button.ogg',
+                next_level: 'sounds/next_level.ogg',
+                ship_hit: 'sounds/ship_hit.ogg',
+                fire_bullet: 'sounds/fire_bullet.ogg',
+                bgm: 'sounds/bgm.ogg'
+            },
+            fonts: {
+                main: 'fonts/Font.otf'
+            }
+        };
+
+        // 主游戏类 - AlienInvasion
         class AlienInvasion {
             constructor() {
                 this.canvas = document.getElementById('gameCanvas');
@@ -297,77 +139,194 @@
                 this.stats = new GameStats(this);
                 this.ratio = 1;
                 this.lastTime = 0;
+                this.keys = {};
+                this.loaded = false;
                 this.gameActive = false;
                 this.paused = false;
-                this.keys = {};
+                this.selectingSlot = true;
+                this.choiceDifficulty = false;
+                this.difficulty = "";
+                this.slot = 1;
+                
                 this.ship = null;
                 this.shipBullets = [];
                 this.alienBullets = [];
                 this.aliens = [];
+                this.buttons = {};
                 this.lastCreateAlien = 0;
                 this.aliensCreated = 0;
+                this.bossActive = false;
+                this.addBoss = false;
+                
+                this.images = {};
+                this.sounds = {};
+                this.fonts = {};
                 
                 this.init();
             }
             
-            init() {
+            async init() {
+                // 加载资源
+                await this.loadResources();
+                
+                // 设置事件监听器
                 this.setupEventListeners();
-                this.loadAssets();
-                this.resetGame();
+                
+                // 初始化按钮
+                this.setupButtons();
+                
+                // 开始游戏循环
+                this.lastTime = performance.now();
+                this.gameLoop(this.lastTime);
+            }
+            
+            async loadResources() {
+                // 加载图片
+                await Promise.all([
+                    this.loadImage('ship'),
+                    this.loadImage('alien'),
+                    this.loadImage('alien_boss')
+                ]);
+                
+                // 加载声音
+                await Promise.all([
+                    this.loadSound('explosion'),
+                    this.loadSound('clicked_button'),
+                    this.loadSound('next_level'),
+                    this.loadSound('ship_hit'),
+                    this.loadSound('fire_bullet'),
+                    this.loadSound('bgm')
+                ]);
+                
+                // 加载字体
+                await this.loadFont('main');
+                
+                this.loaded = true;
+                this.renderStartScreen();
+            }
+            
+            loadImage(name) {
+                return new Promise((resolve, reject) => {
+                    const img = new Image();
+                    img.src = RESOURCES.images[name];
+                    img.onload = () => {
+                        this.images[name] = img;
+                        resolve();
+                    };
+                    img.onerror = reject;
+                });
+            }
+            
+            loadSound(name) {
+                return new Promise((resolve, reject) => {
+                    const audio = new Audio(RESOURCES.sounds[name]);
+                    audio.addEventListener('canplaythrough', () => {
+                        this.sounds[name] = audio;
+                        resolve();
+                    });
+                    audio.onerror = reject;
+                });
+            }
+            
+            loadFont(name) {
+                return new Promise((resolve) => {
+                    const font = new FontFace('GameFont', `url(${RESOURCES.fonts[name]})`);
+                    font.load().then((loadedFont) => {
+                        document.fonts.add(loadedFont);
+                        this.fonts[name] = 'GameFont';
+                        resolve();
+                    });
+                });
             }
             
             setupEventListeners() {
                 // 键盘事件
                 window.addEventListener('keydown', (e) => {
-                    this.keys[e.key] = true;
-                    if (e.key === 'p' || e.key === 'P') this.togglePause();
-                    if (e.key === 'm' || e.key === 'M') this.toggleMute();
-                    if (e.key === 'Escape') this.exitGame();
+                    const key = e.key.toLowerCase();
+                    this.keys[key] = true;
+                    
+                    if (key === 'p') this.togglePause();
+                    if (key === 'm') this.toggleMute();
+                    if (key === 'escape') this.exitGame();
                 });
                 
                 window.addEventListener('keyup', (e) => {
-                    this.keys[e.key] = false;
+                    this.keys[e.key.toLowerCase()] = false;
                 });
                 
-                // 按钮事件
-                document.querySelector('.start').addEventListener('click', () => this.startGame());
-                document.querySelector('.pause').addEventListener('click', () => this.togglePause());
-                document.querySelector('.mute').addEventListener('click', () => this.toggleMute());
+                // 鼠标事件
+                this.canvas.addEventListener('click', (e) => {
+                    if (!this.gameActive || this.paused) {
+                        const rect = this.canvas.getBoundingClientRect();
+                        const mouseX = e.clientX - rect.left;
+                        const mouseY = e.clientY - rect.top;
+                        this.checkButtonClick(mouseX, mouseY);
+                    }
+                });
             }
             
-            loadAssets() {
-                // 在真实游戏中这里会加载图片和声音
-                console.log("资源加载中...");
-                // 模拟资源加载完成
-                setTimeout(() => {
-                    this.assetsLoaded = true;
-                    this.renderStartScreen();
-                }, 500);
-            }
-            
-            startGame() {
-                if (!this.gameActive && this.assetsLoaded) {
-                    this.gameActive = true;
-                    this.paused = false;
-                    this.resetGame();
-                    this.gameLoop(0);
-                }
-            }
-            
-            resetGame() {
-                this.stats.resetStats();
-                this.ship = new Ship(this);
-                this.shipBullets = [];
-                this.alienBullets = [];
-                this.aliens = [];
-                this.aliensCreated = 0;
-                this.lastCreateAlien = 0;
-                this.updateUI();
+            setupButtons() {
+                // 难度按钮
+                this.buttons.easy = {
+                    text: "简单",
+                    color: "#00cc00",
+                    fontSize: 40,
+                    position: { x: this.canvas.width / 2, y: this.canvas.height / 2 - 60 },
+                    action: () => this.selectDifficulty('easy')
+                };
+                
+                this.buttons.normal = {
+                    text: "正常",
+                    color: "#cccc00",
+                    fontSize: 40,
+                    position: { x: this.canvas.width / 2, y: this.canvas.height / 2 },
+                    action: () => this.selectDifficulty('normal')
+                };
+                
+                this.buttons.hard = {
+                    text: "困难",
+                    color: "#cc0000",
+                    fontSize: 40,
+                    position: { x: this.canvas.width / 2, y: this.canvas.height / 2 + 60 },
+                    action: () => this.selectDifficulty('hard')
+                };
+                
+                // 存档槽位按钮
+                this.buttons.slot1 = {
+                    text: "空存档",
+                    color: "#b4b4b4",
+                    fontSize: 40,
+                    position: { x: this.canvas.width / 2, y: this.canvas.height / 2 - 60 },
+                    action: () => this.selectSlot(1)
+                };
+                
+                this.buttons.slot2 = {
+                    text: "空存档",
+                    color: "#b4b4b4",
+                    fontSize: 40,
+                    position: { x: this.canvas.width / 2, y: this.canvas.height / 2 },
+                    action: () => this.selectSlot(2)
+                };
+                
+                this.buttons.slot3 = {
+                    text: "空存档",
+                    color: "#b4b4b4",
+                    fontSize: 40,
+                    position: { x: this.canvas.width / 2, y: this.canvas.height / 2 + 60 },
+                    action: () => this.selectSlot(3)
+                };
+                
+                // 继续按钮
+                this.buttons.continue = {
+                    text: "继续",
+                    color: "#a0a0a0",
+                    fontSize: 40,
+                    position: { x: this.canvas.width / 2, y: this.canvas.height / 2 },
+                    action: () => this.continueGame()
+                };
             }
             
             gameLoop(timestamp) {
-                if (!this.gameActive || this.paused) return;
-                
                 const deltaTime = timestamp - this.lastTime;
                 this.lastTime = timestamp;
                 
@@ -378,13 +337,16 @@
             }
             
             update(deltaTime) {
-                // 更新飞船
-                this.ship.update(deltaTime, this.keys);
+                if (!this.gameActive || this.paused || !this.loaded) return;
                 
-                // 发射子弹
-                if (this.keys[' '] || this.keys['Spacebar']) {
-                    if (this.shipBullets.length < this.settings.bulletsAllowed) {
+                // 更新飞船
+                if (this.ship) {
+                    this.ship.update(deltaTime, this.keys);
+                    
+                    // 发射子弹
+                    if (this.keys[' '] && this.shipBullets.length < this.settings.bulletsAllowed) {
                         this.ship.fireBullet();
+                        this.playSound('fire_bullet');
                     }
                 }
                 
@@ -399,9 +361,6 @@
                 
                 // 检查碰撞
                 this.checkCollisions();
-                
-                // 更新UI
-                this.updateUI();
             }
             
             updateBullets(deltaTime) {
@@ -424,6 +383,18 @@
             
             createAliens() {
                 const now = Date.now();
+                
+                // 创建Boss
+                if (this.bossActive && !this.addBoss) {
+                    const boss = new AlienBoss(this);
+                    boss.x = this.canvas.width / 2 - boss.width / 2;
+                    boss.y = -boss.height;
+                    this.aliens.push(boss);
+                    this.aliensCreated++;
+                    this.addBoss = true;
+                }
+                
+                // 创建普通外星人
                 if (now - this.lastCreateAlien > 1000 && 
                     this.aliensCreated < this.settings.totalAliens) {
                     
@@ -454,8 +425,14 @@
                     for (let j = this.aliens.length - 1; j >= 0; j--) {
                         if (this.checkCollision(this.shipBullets[i], this.aliens[j])) {
                             if (this.aliens[j].takeDamage(this.shipBullets[i].damage)) {
-                                this.stats.score += this.settings.alienPoints;
+                                if (this.aliens[j] instanceof AlienBoss) {
+                                    this.stats.score += this.settings.alienBossPoints;
+                                } else {
+                                    this.stats.score += this.settings.alienPoints;
+                                }
                                 this.aliens.splice(j, 1);
+                                this.playSound('explosion');
+                                this.checkHighScore();
                             }
                             this.shipBullets.splice(i, 1);
                             break;
@@ -482,6 +459,11 @@
                         this.alienBullets.splice(i, 1);
                     }
                 }
+                
+                // 检查是否清除所有外星人
+                if (this.aliensCreated >= this.settings.totalAliens && this.aliens.length === 0) {
+                    this.startNewLevel();
+                }
             }
             
             checkCollision(obj1, obj2) {
@@ -493,7 +475,7 @@
             
             shipHit() {
                 this.stats.shipsLeft--;
-                this.updateUI();
+                this.playSound('ship_hit');
                 
                 if (this.stats.shipsLeft <= 0) {
                     this.gameOver();
@@ -504,40 +486,80 @@
                     // 清空子弹
                     this.shipBullets = [];
                     this.alienBullets = [];
+                    
+                    // 重置外星人
+                    this.aliens = [];
+                    this.aliensCreated = 0;
+                    this.addBoss = false;
+                }
+            }
+            
+            startNewLevel() {
+                this.stats.level++;
+                this.playSound('next_level');
+                
+                if (this.stats.level % this.settings.alienBossLevelEvery === 0) {
+                    this.bossActive = true;
+                    this.addBoss = false;
+                } else {
+                    this.bossActive = false;
+                }
+                
+                this.settings.increaseSpeed();
+                this.stats.saveGameData();
+                
+                // 重置游戏状态
+                this.aliens = [];
+                this.shipBullets = [];
+                this.alienBullets = [];
+                this.aliensCreated = 0;
+                this.ship.reset();
+            }
+            
+            checkHighScore() {
+                if (this.stats.score > this.stats.highScore) {
+                    this.stats.highScore = this.stats.score;
                 }
             }
             
             gameOver() {
                 this.gameActive = false;
-                this.renderGameOver();
-                this.stats.saveHighScore();
-            }
-            
-            updateUI() {
-                document.getElementById('score').textContent = this.stats.score;
-                document.getElementById('highScore').textContent = this.stats.highScore;
-                document.getElementById('level').textContent = this.stats.level;
-                document.getElementById('lives').textContent = this.stats.shipsLeft;
+                this.choiceDifficulty = true;
+                this.difficulty = "";
+                this.stats.resetStats();
+                this.renderStartScreen();
             }
             
             render() {
+                if (!this.loaded) return;
+                
                 this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
                 
                 // 绘制背景
                 this.drawBackground();
                 
-                // 绘制飞船
-                this.ship.draw(this.ctx);
-                
-                // 绘制子弹
-                this.shipBullets.forEach(bullet => bullet.draw(this.ctx));
-                this.alienBullets.forEach(bullet => bullet.draw(this.ctx));
-                
-                // 绘制外星人
-                this.aliens.forEach(alien => alien.draw(this.ctx));
-                
-                // 绘制UI
-                this.drawUI();
+                if (this.selectingSlot) {
+                    this.renderSlotSelection();
+                } else if (this.choiceDifficulty) {
+                    this.renderDifficultySelection();
+                } else if (this.gameActive) {
+                    // 绘制游戏元素
+                    if (this.ship) this.ship.draw(this.ctx);
+                    
+                    this.shipBullets.forEach(bullet => bullet.draw(this.ctx));
+                    this.alienBullets.forEach(bullet => bullet.draw(this.ctx));
+                    
+                    this.aliens.forEach(alien => alien.draw(this.ctx));
+                    
+                    // 绘制UI
+                    this.drawUI();
+                    
+                    if (this.paused) {
+                        this.renderPauseScreen();
+                    }
+                } else {
+                    this.renderStartScreen();
+                }
             }
             
             drawBackground() {
@@ -546,7 +568,7 @@
                 
                 // 绘制星星
                 this.ctx.fillStyle = '#ffffff';
-                for (let i = 0; i < 100; i++) {
+                for (let i = 0; i < 200; i++) {
                     const x = Math.random() * this.canvas.width;
                     const y = Math.random() * this.canvas.height;
                     const size = Math.random() * 2;
@@ -555,184 +577,439 @@
             }
             
             drawUI() {
-                // 绘制分数
+                // 绘制分数和关卡
                 this.ctx.fillStyle = '#ffffff';
-                this.ctx.font = '20px Arial';
-                this.ctx.fillText(`分数: ${this.stats.score}`, 20, 30);
-                this.ctx.fillText(`最高分: ${this.stats.highScore}`, 20, 60);
-                this.ctx.fillText(`关卡: ${this.stats.level}`, 20, 90);
+                this.ctx.font = '24px GameFont';
+                
+                // 当前分数
+                const scoreText = `当前得分: ${this.stats.score}`;
+                this.ctx.fillText(scoreText, this.canvas.width - 250, 40);
+                
+                // 最高分
+                const highScoreText = `最高得分: ${this.stats.highScore}`;
+                const highScoreWidth = this.ctx.measureText(highScoreText).width;
+                this.ctx.fillText(highScoreText, (this.canvas.width - highScoreWidth) / 2, 40);
+                
+                // 关卡
+                const levelText = `关卡: ${this.stats.level}`;
+                this.ctx.fillText(levelText, 50, 40);
                 
                 // 绘制生命
                 for (let i = 0; i < this.stats.shipsLeft; i++) {
-                    this.ctx.fillStyle = '#4361ee';
-                    this.ctx.beginPath();
-                    this.ctx.moveTo(this.canvas.width - 50 - i * 40, 40);
-                    this.ctx.lineTo(this.canvas.width - 70 - i * 40, 70);
-                    this.ctx.lineTo(this.canvas.width - 30 - i * 40, 70);
-                    this.ctx.closePath();
-                    this.ctx.fill();
+                    this.ctx.drawImage(
+                        this.images.ship,
+                        20 + i * 40,
+                        60,
+                        30,
+                        40
+                    );
                 }
             }
             
             renderStartScreen() {
-                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-                this.drawBackground();
-                
                 this.ctx.fillStyle = '#ffffff';
-                this.ctx.font = '48px Arial';
+                this.ctx.font = '60px GameFont';
                 this.ctx.textAlign = 'center';
                 this.ctx.fillText('外星人入侵', this.canvas.width / 2, this.canvas.height / 3);
                 
-                this.ctx.font = '24px Arial';
-                this.ctx.fillText('JavaScript版', this.canvas.width / 2, this.canvas.height / 3 + 50);
+                this.ctx.font = '30px GameFont';
+                this.ctx.fillText('JavaScript版', this.canvas.width / 2, this.canvas.height / 3 + 60);
                 
-                this.ctx.font = '20px Arial';
-                this.ctx.fillText('按空格键开始游戏', this.canvas.width / 2, this.canvas.height / 2 + 50);
+                this.ctx.font = '24px GameFont';
+                this.ctx.fillText('点击开始游戏', this.canvas.width / 2, this.canvas.height / 2 + 60);
                 
-                this.ctx.fillText(`最高分: ${this.stats.highScore}`, this.canvas.width / 2, this.canvas.height / 2 + 100);
+                this.ctx.fillText(`最高分: ${this.stats.highScore}`, this.canvas.width / 2, this.canvas.height / 2 + 120);
             }
             
-            renderGameOver() {
+            renderSlotSelection() {
+                this.ctx.fillStyle = '#ffffff';
+                this.ctx.font = '48px GameFont';
+                this.ctx.textAlign = 'center';
+                this.ctx.fillText('选择存档槽', this.canvas.width / 2, 100);
+                
+                // 绘制存档槽按钮
+                this.drawButton(this.buttons.slot1);
+                this.drawButton(this.buttons.slot2);
+                this.drawButton(this.buttons.slot3);
+                
+                // 绘制帮助文本
+                this.ctx.fillStyle = '#a0d2eb';
+                this.ctx.font = '20px GameFont';
+                this.ctx.fillText('方向键移动,空格射击,M静音,P暂停', this.canvas.width / 2, this.canvas.height - 100);
+                this.ctx.fillText('ESC退出.(每过一关会自动存档)', this.canvas.width / 2, this.canvas.height - 70);
+            }
+            
+            renderDifficultySelection() {
+                this.ctx.fillStyle = '#ffffff';
+                this.ctx.font = '48px GameFont';
+                this.ctx.textAlign = 'center';
+                this.ctx.fillText('选择难度', this.canvas.width / 2, 100);
+                
+                // 绘制难度按钮
+                this.drawButton(this.buttons.easy);
+                this.drawButton(this.buttons.normal);
+                this.drawButton(this.buttons.hard);
+            }
+            
+            renderPauseScreen() {
                 this.ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
                 this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
                 
                 this.ctx.fillStyle = '#ffffff';
-                this.ctx.font = '48px Arial';
+                this.ctx.font = '48px GameFont';
                 this.ctx.textAlign = 'center';
-                this.ctx.fillText('游戏结束', this.canvas.width / 2, this.canvas.height / 3);
+                this.ctx.fillText('已暂停', this.canvas.width / 2, this.canvas.height / 2 - 60);
                 
-                this.ctx.font = '36px Arial';
-                this.ctx.fillText(`最终得分: ${this.stats.score}`, this.canvas.width / 2, this.canvas.height / 2);
+                if (this.difficulty) {
+                    this.drawButton(this.buttons.continue);
+                }
+            }
+            
+            drawButton(button) {
+                this.ctx.fillStyle = button.color;
+                this.ctx.beginPath();
+                this.ctx.roundRect(
+                    button.position.x - 150, 
+                    button.position.y - 25, 
+                    300, 
+                    50, 
+                    5
+                );
+                this.ctx.fill();
                 
-                this.ctx.font = '24px Arial';
-                this.ctx.fillText('按空格键重新开始', this.canvas.width / 2, this.canvas.height / 2 + 100);
+                this.ctx.fillStyle = '#ffffff';
+                this.ctx.font = `${button.fontSize}px GameFont`;
+                this.ctx.textAlign = 'center';
+                this.ctx.textBaseline = 'middle';
+                this.ctx.fillText(button.text, button.position.x, button.position.y);
+            }
+            
+            checkButtonClick(mouseX, mouseY) {
+                // 检查按钮点击
+                for (const key in this.buttons) {
+                    const button = this.buttons[key];
+                    
+                    if (mouseX >= button.position.x - 150 &&
+                        mouseX <= button.position.x + 150 &&
+                        mouseY >= button.position.y - 25 &&
+                        mouseY <= button.position.y + 25) {
+                        
+                        this.playSound('clicked_button');
+                        button.action();
+                        return;
+                    }
+                }
+            }
+            
+            selectSlot(slot) {
+                this.slot = slot;
+                this.selectingSlot = false;
+                this.choiceDifficulty = true;
+            }
+            
+            selectDifficulty(difficulty) {
+                this.difficulty = difficulty;
+                this.settings.initializeDynamicSettings(difficulty);
+                this.stats.difficulty = difficulty;
+                this.choiceDifficulty = false;
+                this.gameActive = true;
+                this.paused = false;
+                
+                // 初始化游戏
+                this.ship = new Ship(this);
+                this.shipBullets = [];
+                this.alienBullets = [];
+                this.aliens = [];
+                this.aliensCreated = 0;
+                this.bossActive = false;
+                this.addBoss = false;
+                
+                this.stats.resetStats();
+            }
+            
+            continueGame() {
+                this.paused = false;
             }
             
             togglePause() {
-                if (!this.gameActive) return;
-                
-                this.paused = !this.paused;
-                if (!this.paused) {
-                    this.lastTime = performance.now();
-                    this.gameLoop(this.lastTime);
-                }
-                
-                if (this.paused) {
-                    this.ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
-                    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-                    this.ctx.fillStyle = '#ffffff';
-                    this.ctx.font = '48px Arial';
-                    this.ctx.textAlign = 'center';
-                    this.ctx.fillText('已暂停', this.canvas.width / 2, this.canvas.height / 2);
+                if (this.gameActive) {
+                    this.paused = !this.paused;
                 }
             }
             
             toggleMute() {
                 this.stats.soundOn = !this.stats.soundOn;
-                // 在实际游戏中，这里会控制声音
-                console.log(`声音: ${this.stats.soundOn ? '开启' : '关闭'}`);
+                if (this.stats.soundOn) {
+                    this.sounds.bgm.play();
+                } else {
+                    this.sounds.bgm.pause();
+                }
+            }
+            
+            playSound(name) {
+                if (this.stats.soundOn && this.sounds[name]) {
+                    const sound = this.sounds[name].cloneNode();
+                    sound.play();
+                }
             }
             
             exitGame() {
                 if (this.gameActive) {
+                    if (this.stats.level % this.settings.alienBossLevelEvery === 0) {
+                        this.addBoss = false;
+                    }
                     this.gameActive = false;
-                    this.renderStartScreen();
+                    this.selectingSlot = true;
+                    this.renderSlotSelection();
                 }
             }
         }
 
-        // 设置类
+        // 设置类 - Settings
         class Settings {
             constructor() {
-                // 基本设置
-                this.bgColor = '#0d1b2a';
-                this.bulletWidth = 4;
+                this.baseScreenWidth = 1280;
+                this.baseScreenHeight = 720;
+                this.bgColor = "#0d1b2a";
                 this.bulletHeight = 15;
-                this.shipBulletColor = '#3a0ca3';
-                this.alienBulletColor = '#f72585';
+                this.bulletWidth = 4;
+                this.shipBulletColor = "#3a0ca3";
+                this.alienBulletColor = "#f72585";
                 this.bulletsAllowed = 4;
                 this.shipLimit = 3;
+                this.alienBossLevelEvery = 5;
+                this.alienBossAttackInterval = 800;
+                this.alienBossAddShieldInterval = 3000;
+                this.alienBossSpeed = 0.1;
                 
-                // 难度设置
-                this.shipSpeed = 5;
-                this.shipHealth = 100;
-                this.shipBulletDamage = 25;
-                this.shipBulletSpeed = 10;
+                this.difficultyConfigs = {
+                    'easy': this.createConfig(1.2, 3.25, 1.5, 4.25, 0.6, 2.0, 1.0, 0.3, 50, 30.0, 10.0, 1.4, 500, 10),
+                    'normal': this.createConfig(1.1, 3.0, 1.3, 4.0, 0.9, 2.25, 1.2, 0.35, 100, 40.0, 15.0, 1.6, 1000, 15),
+                    'hard': this.createConfig(1.0, 2.75, 1.0, 3.75, 1.2, 2.5, 1.4, 0.4, 200, 50.0, 20.0, 1.8, 2000, 20)
+                };
                 
-                this.alienSpeed = 2;
-                this.alienHealth = 50;
-                this.alienPoints = 100;
-                this.totalAliens = 20;
+                this.speedupScale = 1.05;
+                this.scoreScale = 1.5;
                 
-                this.alienBossHealth = 500;
-                this.alienBossPoints = 1000;
+                // 默认设置
+                this.initializeDynamicSettings('normal');
+            }
+            
+            createConfig(...args) {
+                return {
+                    shipBulletDamage: args[0],
+                    shipBulletSpeed: args[1],
+                    shipHealth: args[2],
+                    shipSpeed: args[3],
+                    alienBulletDamage: args[4],
+                    alienBulletSpeed: args[5],
+                    alienHealth: args[6],
+                    alienSpeed: args[7],
+                    alienPoints: args[8],
+                    alienBossHealth: args[9],
+                    alienBossShield: args[10],
+                    alienBossAddShield: args[11],
+                    alienBossPoints: args[12],
+                    totalAliens: args[13]
+                };
+            }
+            
+            initializeDynamicSettings(difficulty) {
+                this.difficulty = difficulty;
+                const config = this.difficultyConfigs[difficulty];
+                Object.assign(this, config);
+            }
+            
+            increaseSpeed() {
+                // 增加游戏速度
+                const speedAttributes = [
+                    'alienBulletDamage', 'alienBulletSpeed', 'alienHealth', 'alienSpeed',
+                    'alienBossHealth', 'alienBossShield', 'alienBossAddShield'
+                ];
+                
+                const scoreAttributes = ['alienPoints', 'alienBossPoints'];
+                
+                for (const attr of speedAttributes) {
+                    this[attr] *= this.speedupScale;
+                }
+                
+                this.totalAliens = Math.round((this.totalAliens + 1) * this.speedupScale);
+                
+                for (const attr of scoreAttributes) {
+                    this[attr] = Math.round(this[attr] * this.scoreScale);
+                }
             }
         }
 
-        // 游戏状态类
+        // 游戏状态类 - GameStats
         class GameStats {
             constructor(game) {
                 this.game = game;
-                this.resetStats();
-                this.loadHighScore();
+                this.soundOn = true;
+                this.addBoss = false;
+                this.bossActive = false;
+                this.gameActive = false;
+                this.selectingSlot = true;
+                this.choiceDifficulty = false;
+                this.difficulty = "";
+                
+                this.loadData();
+                this.highScore = this.getHighScore();
+            }
+            
+            getHighScore() {
+                const slotScores = [
+                    this.gameData.slot1.score,
+                    this.gameData.slot2.score,
+                    this.gameData.slot3.score
+                ];
+                const maxSlotScore = Math.max(...slotScores);
+                return Math.max(this.gameData.highScore, maxSlotScore);
             }
             
             resetStats() {
                 this.score = 0;
                 this.level = 1;
                 this.shipsLeft = this.game.settings.shipLimit;
-                this.soundOn = true;
+                this.bossActive = false;
+                this.saveGameData();
             }
             
-            loadHighScore() {
-                this.highScore = parseInt(localStorage.getItem('alienInvasionHighScore') || '0');
-            }
-            
-            saveHighScore() {
-                if (this.score > this.highScore) {
-                    this.highScore = this.score;
-                    localStorage.setItem('alienInvasionHighScore', this.highScore.toString());
+            loadData() {
+                const savedData = localStorage.getItem('alienInvasionSave');
+                if (savedData) {
+                    this.gameData = JSON.parse(savedData);
+                } else {
+                    const slotData = {
+                        score: 0, 
+                        level: 1, 
+                        shipsLeft: this.game.settings.shipLimit, 
+                        difficulty: ''
+                    };
+                    
+                    this.gameData = {
+                        highScore: 0,
+                        slot1: {...slotData},
+                        slot2: {...slotData},
+                        slot3: {...slotData}
+                    };
                 }
+                
+                // 更新按钮文本
+                this.game.button.slot1.text = this.getSlotText(1);
+                this.game.button.slot2.text = this.getSlotText(2);
+                this.game.button.slot3.text = this.getSlotText(3);
+            }
+            
+            getSlotText(slot) {
+                const slotData = this.gameData[`slot${slot}`];
+                if (slotData.difficulty === "") {
+                    return "空存档";
+                }
+                return `第${slotData.level}关,${slotData.score}分,剩${slotData.shipsLeft}艘飞船`;
+            }
+            
+            saveGameData() {
+                const slotKey = `slot${this.game.slot}`;
+                
+                this.gameData[slotKey] = {
+                    score: this.score,
+                    level: this.level,
+                    shipsLeft: this.shipsLeft,
+                    difficulty: this.difficulty
+                };
+                
+                this.gameData.highScore = Math.max(this.gameData.highScore, this.highScore);
+                
+                localStorage.setItem('alienInvasionSave', JSON.stringify(this.gameData));
+                
+                // 更新按钮文本
+                this.game.buttons.slot1.text = this.getSlotText(1);
+                this.game.buttons.slot2.text = this.getSlotText(2);
+                this.game.buttons.slot3.text = this.getSlotText(3);
             }
         }
 
-        // 飞船类
+        // 飞船类 - Ship
         class Ship {
             constructor(game) {
                 this.game = game;
+                this.image = game.images.ship;
                 this.width = 50;
                 this.height = 40;
                 this.x = game.canvas.width / 2 - this.width / 2;
-                this.y = game.canvas.height - this.height - 20;
+                this.y = game.canvas.height - this.height - 5;
                 this.speed = game.settings.shipSpeed;
                 this.health = game.settings.shipHealth;
                 this.maxHealth = game.settings.shipHealth;
-                this.color = '#4361ee';
+                this.angle = 0;
+                this.lastAngleChange = 0;
+                this.lastSpeedChange = 0;
+                this.moving = {
+                    up: false,
+                    down: false,
+                    left: false,
+                    right: false
+                };
             }
             
             update(deltaTime, keys) {
+                const now = Date.now();
+                
                 // 移动控制
-                if (keys['ArrowLeft'] || keys['a'] || keys['A']) this.x -= this.speed;
-                if (keys['ArrowRight'] || keys['d'] || keys['D']) this.x += this.speed;
-                if (keys['ArrowUp'] || keys['w'] || keys['W']) this.y -= this.speed;
-                if (keys['ArrowDown'] || keys['s'] || keys['S']) this.y += this.speed;
+                this.moving.left = keys['arrowleft'] || keys['a'];
+                this.moving.right = keys['arrowright'] || keys['d'];
+                this.moving.up = keys['arrowup'] || keys['w'];
+                this.moving.down = keys['arrowdown'] || keys['s'];
+                
+                // 更新角度
+                if (now - this.lastAngleChange > 100) {
+                    if (this.moving.left && this.angle < 5) this.angle += 1;
+                    else if (this.moving.right && this.angle > -5) this.angle -= 1;
+                    else {
+                        if (this.angle < 0) this.angle += 1;
+                        else if (this.angle > 0) this.angle -= 1;
+                    }
+                    this.lastAngleChange = now;
+                }
+                
+                // 更新速度
+                const moving = this.moving.up || this.moving.down || this.moving.left || this.moving.right;
+                if (now - this.lastSpeedChange > 200) {
+                    if (moving && this.speed < this.game.settings.shipSpeed * 1.3) {
+                        this.speed += this.game.settings.shipSpeed * 0.01;
+                    }
+                    if (!moving && this.speed > this.game.settings.shipSpeed * 0.5) {
+                        this.speed -= this.game.settings.shipSpeed * 0.03;
+                    }
+                    this.lastSpeedChange = now;
+                }
+                
+                // 移动飞船
+                if (this.moving.left) this.x -= this.speed;
+                if (this.moving.right) this.x += this.speed;
+                if (this.moving.up) this.y -= this.speed;
+                if (this.moving.down) this.y += this.speed;
                 
                 // 边界检查
-                if (this.x < 0) this.x = 0;
-                if (this.x > this.game.canvas.width - this.width) this.x = this.game.canvas.width - this.width;
-                if (this.y < 0) this.y = 0;
-                if (this.y > this.game.canvas.height - this.height) this.y = this.game.canvas.height - this.height;
+                this.x = Math.max(5, Math.min(this.game.canvas.width - this.width - 5, this.x));
+                this.y = Math.max(5, Math.min(this.game.canvas.height - this.height - 5, this.y));
             }
             
             draw(ctx) {
-                // 绘制飞船
-                ctx.fillStyle = this.color;
-                ctx.beginPath();
-                ctx.moveTo(this.x + this.width / 2, this.y);
-                ctx.lineTo(this.x, this.y + this.height);
-                ctx.lineTo(this.x + this.width, this.y + this.height);
-                ctx.closePath();
-                ctx.fill();
+                ctx.save();
+                ctx.translate(this.x + this.width / 2, this.y + this.height / 2);
+                ctx.rotate(this.angle * Math.PI / 180);
+                
+                ctx.drawImage(
+                    this.image,
+                    -this.width / 2,
+                    -this.height / 2,
+                    this.width,
+                    this.height
+                );
+                
+                ctx.restore();
                 
                 // 绘制生命条
                 this.drawHealthBar(ctx);
@@ -761,29 +1038,35 @@
                     this.y,
                     this.game.settings.shipBulletSpeed,
                     this.game.settings.shipBulletColor,
-                    this.game.settings.shipBulletDamage
+                    this.game.settings.shipBulletDamage,
+                    -this.angle
                 );
                 this.game.shipBullets.push(bullet);
             }
             
             takeDamage(damage) {
                 this.health -= damage;
-                if (this.health <= 0) {
-                    return true; // 飞船被摧毁
-                }
-                return false;
+                return this.health <= 0;
             }
             
             reset() {
                 this.x = this.game.canvas.width / 2 - this.width / 2;
-                this.y = this.game.canvas.height - this.height - 20;
+                this.y = this.game.canvas.height - this.height - 5;
                 this.health = this.maxHealth;
+                this.angle = 0;
+                this.speed = this.game.settings.shipSpeed * 0.6;
+                this.moving = {
+                    up: false,
+                    down: false,
+                    left: false,
+                    right: false
+                };
             }
         }
 
-        // 子弹类
+        // 子弹类 - Bullet
         class Bullet {
-            constructor(game, x, y, speed, color, damage) {
+            constructor(game, x, y, speed, color, damage, angle = 0) {
                 this.game = game;
                 this.x = x;
                 this.y = y;
@@ -792,26 +1075,42 @@
                 this.speed = speed;
                 this.color = color;
                 this.damage = damage;
+                this.angle = angle;
+                this.direction = {
+                    x: Math.sin(angle * Math.PI / 180),
+                    y: -Math.cos(angle * Math.PI / 180)
+                };
             }
             
             update(deltaTime) {
-                this.y -= this.speed;
+                this.x += this.direction.x * this.speed;
+                this.y += this.direction.y * this.speed;
             }
             
             draw(ctx) {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.angle * Math.PI / 180);
+                
                 ctx.fillStyle = this.color;
-                ctx.fillRect(this.x - this.width / 2, this.y, this.width, this.height);
+                ctx.fillRect(-this.width / 2, 0, this.width, this.height);
+                
+                ctx.restore();
             }
             
             isOffScreen(canvas) {
-                return this.y < -this.height;
+                return this.y < -this.height || 
+                       this.y > canvas.height + this.height ||
+                       this.x < -this.width ||
+                       this.x > canvas.width + this.width;
             }
         }
 
-        // 外星人类
+        // 外星人类 - Alien
         class Alien {
             constructor(game) {
                 this.game = game;
+                this.image = game.images.alien;
                 this.width = 40;
                 this.height = 40;
                 this.x = 0;
@@ -819,8 +1118,9 @@
                 this.speed = game.settings.alienSpeed;
                 this.health = game.settings.alienHealth;
                 this.maxHealth = game.settings.alienHealth;
-                this.color = '#f72585';
                 this.lastAttack = 0;
+                this.showHealthUntil = 0;
+                this.healthDisplayDuration = 3000;
             }
             
             update(deltaTime) {
@@ -835,18 +1135,7 @@
             }
             
             draw(ctx) {
-                // 绘制外星人
-                ctx.fillStyle = this.color;
-                ctx.beginPath();
-                ctx.arc(this.x + this.width / 2, this.y + this.height / 2, this.width / 2, 0, Math.PI * 2);
-                ctx.fill();
-                
-                // 绘制眼睛
-                ctx.fillStyle = '#ffffff';
-                ctx.beginPath();
-                ctx.arc(this.x + this.width / 3, this.y + this.height / 3, this.width / 8, 0, Math.PI * 2);
-                ctx.arc(this.x + 2 * this.width / 3, this.y + this.height / 3, this.width / 8, 0, Math.PI * 2);
-                ctx.fill();
+                ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
                 
                 // 绘制生命条
                 this.drawHealthBar(ctx);
@@ -881,11 +1170,107 @@
             }
             
             takeDamage(damage) {
+                const now = Date.now();
+                this.showHealthUntil = now + this.healthDisplayDuration;
+                
                 this.health -= damage;
-                if (this.health <= 0) {
-                    return true; // 外星人被摧毁
+                return this.health <= 0;
+            }
+        }
+
+        // Boss外星人类 - AlienBoss
+        class AlienBoss extends Alien {
+            constructor(game) {
+                super(game);
+                this.image = game.images.alien_boss;
+                this.width = 80;
+                this.height = 80;
+                this.speed = game.settings.alienBossSpeed;
+                this.health = game.settings.alienBossHealth;
+                this.maxHealth = game.settings.alienBossHealth;
+                this.shield = game.settings.alienBossShield;
+                this.maxShield = game.settings.alienBossShield;
+                this.lastAttack = 0;
+                this.lastAddShield = 0;
+                this.attackInterval = game.settings.alienBossAttackInterval;
+                this.addShieldInterval = game.settings.alienBossAddShieldInterval;
+            }
+            
+            update(deltaTime) {
+                this.y += this.speed;
+                
+                const now = Date.now();
+                
+                // 攻击
+                if (now - this.lastAttack > this.attackInterval) {
+                    this.fireBullet();
+                    this.lastAttack = now;
                 }
-                return false;
+                
+                // 恢复护盾
+                if (now - this.lastAddShield > this.addShieldInterval) {
+                    this.shield = Math.min(this.maxShield, this.shield + game.settings.alienBossAddShield);
+                    this.lastAddShield = now;
+                }
+            }
+            
+            draw(ctx) {
+                ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+                
+                // 绘制生命条
+                this.drawHealthBar(ctx);
+                
+                // 绘制护盾
+                this.drawShield(ctx);
+            }
+            
+            drawShield(ctx) {
+                if (this.shield > 0) {
+                    ctx.strokeStyle = '#4cc9f0';
+                    ctx.lineWidth = 3;
+                    ctx.beginPath();
+                    ctx.arc(
+                        this.x + this.width / 2,
+                        this.y + this.height / 2,
+                        this.width / 2 + 10,
+                        0,
+                        Math.PI * 2
+                    );
+                    ctx.stroke();
+                }
+            }
+            
+            fireBullet() {
+                // 发射多个子弹
+                for (let i = 0; i < 5; i++) {
+                    const angle = 120 + i * 30; // 120°到240°之间
+                    const bullet = new Bullet(
+                        this.game,
+                        this.x + this.width / 2,
+                        this.y + this.height,
+                        this.game.settings.alienBulletSpeed * 1.2,
+                        this.game.settings.alienBulletColor,
+                        this.game.settings.alienBulletDamage * 1.5,
+                        angle
+                    );
+                    this.game.alienBullets.push(bullet);
+                }
+            }
+            
+            takeDamage(damage) {
+                const now = Date.now();
+                this.showHealthUntil = now + this.healthDisplayDuration;
+                
+                // 先减少护盾
+                if (this.shield > 0) {
+                    const shieldDamage = Math.min(damage, this.shield);
+                    this.shield -= shieldDamage;
+                    damage -= shieldDamage;
+                    if (damage <= 0) return false;
+                }
+                
+                this.health -= damage;
+                return this.health <= 0;
             }
         }
 
