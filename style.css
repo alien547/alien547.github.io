@@ -18,7 +18,7 @@ li a{
     padding: 1px 50px;
     text-decoration: none;
 }
-li a:hover{
+li a:hover:not(.active){
     background-color: #646464;
     color: #ffffff;
 }/*悬浮*/
