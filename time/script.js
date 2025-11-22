@@ -3,11 +3,11 @@ function updateTime(){
     var year = now.getFullYear();
     var month = now.getMonth() + 1;
     var day = now.getDate();
-    var hour = now.getHours();
-    var minute = now.getMinutes();
-    var second = now.getSeconds();
-    var formattedTime = `${year}-${month}-${day} ${hour}:${minute}:${second}`;
+    var hour = now.getHours().toString().padStart(2, '0');
+    var minute = now.getMinutes().toString().padStart(2, '0');
+    var second = now.getSeconds().toString().padStart(2, '0');//自动补0
+    var formattedTime = `${year}年${month}月${day}日 ${hour}:${minute}:${second}`;
     document.getElementById('time').innerHTML = formattedTime;
 }
 
-setInterval(updateTime, 1000);
+setInterval(updateTime, 1000);//每秒刷新

@@ -21,11 +21,11 @@ li a{
 li a:hover{
     background-color: #646464;
     color: #ffffff;
-}
+}/*悬浮*/
 li a.active{
     background-color: #64ff64;
     color: #ffffff;
-}
+}/*当前点击的*/
 .background{
     height: 800px;
     margin: 0;
