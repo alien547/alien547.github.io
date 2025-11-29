@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <title>待办</title>
+        <link rel="stylesheet" href="base.css">
+        <link rel="stylesheet" href="todo.css">
+        <script src="todo.js"></script>
+    </head>
+    <body onload="getTodo()">
+        <div class="background"></div>
+        <ul>
+			<li><a href="home.html"><h3>主页</h3></a></li>
+            <li><a class="active" href="todo.html"><h3>待办</h3></a></li>
+            <li><a href="time.html"><h3>时间</h3></a></li>
+			<li><a href="about.html"><h3>关于</h3></a></li>
+		</ul>
+        <div class="todo">
+            <input id="todo" type="text" placeholder="待办">
+            <button id="change" onclick="setTodo()">√</button>
+        </div>
+    </body>
+</html>

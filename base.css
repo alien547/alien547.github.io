@@ -18,14 +18,14 @@ li a{
     padding: 1px 50px;
     text-decoration: none;
 }
-li a:hover:not(.active){
-    background-color: #646464;
-    color: #ffffff;
-}/*悬浮*/
 li a.active{
     background-color: #64ff64;
     color: #ffffff;
 }/*当前点击的*/
+li a:hover:not(.active){
+    background-color: #646464;
+    color: #ffffff;
+}/*悬浮*/
 .background{
     height: 800px;
     margin: 0;
