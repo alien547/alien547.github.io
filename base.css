@@ -19,7 +19,7 @@ li a{
     text-decoration: none;
 }
 li a.active{
-    background-color: #64ff64;
+    background-color: #22dd22;
     color: #ffffff;
 }/*当前点击的*/
 li a:hover:not(.active){
@@ -29,5 +29,5 @@ li a:hover:not(.active){
 .background{
     height: 800px;
     margin: 0;
-    background-image: linear-gradient(to bottom right, #c8c8ff, #e6e6ff);
+    background-image: linear-gradient(to bottom right, #b8b8ff, #d8d8ff);
 }

@@ -3,11 +3,13 @@ function setTodo(){
     if(document.getElementById("change").innerHTML=="√"){
         if(todo!=""){
             localStorage.setItem("todo", todo);
+            document.getElementById("todo").setAttribute("readonly", false);
             document.getElementById("change").innerHTML = "×";
         }
     }else{
         localStorage.removeItem("todo");
         document.getElementById("todo").value = "";
+        document.getElementById("todo").setAttribute("readonly", true);
         document.getElementById("change").innerHTML = "√";
     }
 }
@@ -17,5 +19,12 @@ function getTodo(){
     if(todo!=null){
         document.getElementById("todo").value = todo;
         document.getElementById("change").innerHTML = "×";
+    }
+}
+
+function deleteSpace(){
+    var todo = document.getElementById("todo").value.trim();
+    if(todo==""){
+        document.getElementById("todo").value = "";
     }
 }
