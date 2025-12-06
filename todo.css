@@ -1,7 +1,16 @@
-.todo{
+.inputTodo{
     position: relative;
-    text-align: center;
-    top: -650px;
+    top: -600px;
+    float: right;
+    margin-right: 550px;
+}
+.addTodo{
+    position: relative;
+    top: -800px;
+    left: 150px;
+    font-size: 20px;
+    border-color: #c0c0c0;
+    background-color: #e0e0e0;
 }
 input{
     text-align: center;
@@ -11,7 +20,27 @@ input{
     font-size: 35px;
     max-width: 200px;
 }
-button{
+#todoList{
+    max-height: 500px;
+    max-width: 125px;
+    margin-top: 50px;
+    margin-left: 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+    top: -800px;
+    list-style-type: none;
+}
+.todos{
+    float: bottom;
+    border-color: #c0c0c0;
+    height: 50px;
+    width: 100px;
+    overflow: hidden;
+    font-size: 15px;
+    background-color: #e0e0e0;
+}
+#change{
     border: none;
     background-color: transparent;
     font-size: 30px;

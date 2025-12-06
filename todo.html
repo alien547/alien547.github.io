@@ -8,17 +8,19 @@
         <link rel="stylesheet" href="todo.css">
         <script src="todo.js"></script>
     </head>
-    <body onload="getTodo()">
+    <body onload="getTodos()">
         <div class="background"></div>
-        <ul>
+        <ul class="navigation">
 			<li><a href="home.html"><h3>主页</h3></a></li>
             <li><a class="active" href="todo.html"><h3>待办</h3></a></li>
             <li><a href="time.html"><h3>时间</h3></a></li>
 			<li><a href="about.html"><h3>关于</h3></a></li>
 		</ul>
-        <div class="todo">
-            <input id="todo" onchange="deleteSpace()" type="text" placeholder="待办">
+        <div class="inputTodo">
+            <input id="todo" oninput="changeTodo()" type="text" placeholder="新的待办">
             <button id="change" onclick="setTodo()">√</button>
         </div>
+        <ul id="todoList"><h3>待办事项：</h3></ul>
+        <button class="addTodo" onclick="addTodo()">＋</button>
     </body>
 </html>
