@@ -12,7 +12,7 @@
     border-color: #c0c0c0;
     background-color: #e0e0e0;
 }
-input{
+#todo{
     text-align: center;
     border: none;
     background-color: transparent;
@@ -32,6 +32,7 @@ input{
     list-style-type: none;
 }
 .todos{
+    margin: 1px;
     float: bottom;
     border-color: #c0c0c0;
     height: 50px;

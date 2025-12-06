@@ -77,6 +77,9 @@ function changeTodo(){
 }
 
 function addTodo(){
-    localStorage.setItem("nowTodo", "newTodo");
-    document.getElementById("todo").value = "";
+    var key = localStorage.getItem("nowTodo");
+    if(key!="newTodo"){
+        localStorage.setItem("nowTodo", "newTodo");
+        document.getElementById("todo").value = "";
+    }
 }
