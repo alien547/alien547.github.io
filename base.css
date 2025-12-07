@@ -1,21 +1,29 @@
 ul.navigation{
-    position: relative;
-    top: -800px;
-    list-style-type: none;
-    background-color: #c8c8c8;
-    height: 60px;
-    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 7.5%;
     margin: 0;
     padding: 0;
+    display: flex;
+    list-style-type: none;
+    overflow: hidden;
+    background-color: #c8c8c8;
 }
 ul.navigation li{
+    width: 10%;
+    display: flex;
     float: left;
 }
 ul.navigation li a{
-    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 220%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #000000;
-    text-align: center;
-    padding: 1px 50px;
     text-decoration: none;
 }
 ul.navigation li a.active{
@@ -26,8 +34,22 @@ ul.navigation li a:hover:not(.active){
     background-color: #646464;
     color: #ffffff;
 }/*悬浮*/
+select{
+    position: absolute;
+    top: 2%;
+    height: 4.5%;
+    width: 5%;
+    right: 4%;
+    background-color: #e0e0e0;
+}
 .background{
-    height: 800px;
+    height: 100%;
     margin: 0;
     background-image: linear-gradient(to bottom right, #b8b8ff, #d8d8ff);
+}
+body, html{
+    position: relative;
+    height: 100%;
+    margin: 0;
+    font-size: 10px;
 }

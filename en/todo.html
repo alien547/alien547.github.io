@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Todo</title>
+        <link rel="icon" href="../logo.png" type="image/x-icon">
+        <link rel="stylesheet" href="../base.css">
+        <link rel="stylesheet" href="../todo.css">
+        <script src="../base.js"></script>
+        <script src="../todo.js"></script>
+        <script>localStorage.setItem("nowIn", "todo")</script>
+    </head>
+    <body onload="getTodos()">
+        <div class="background"></div>
+        <ul class="navigation">
+			<li><a href="home.html">Home</a></li>
+            <li><a class="active" href="todo.html">Todo</a></li>
+            <li><a href="time.html">Time</a></li>
+			<li><a href="about.html">About</a></li>
+		</ul>
+        <select id="language" onchange="changeLanguage()">
+			<option value="en">English</option>
+			<option value="zh-CN">中文</option>
+		</select>
+        <div id="vquote"></div>
+        <div class="inputTodo">
+            <input id="todo" oninput="changeTodo()" type="text" placeholder="New todo">
+            <button id="change" onclick="setTodo()">√</button>
+        </div>
+        <ul id="todoList"><button class="addTodo" onclick="addTodo()">＋</button>Todo list:</ul>
+    </body>
+</html>

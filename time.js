@@ -1,4 +1,5 @@
 function updateTime(){
+    var language = localStorage.getItem("language");
     var now = new Date();
     var year = now.getFullYear();
     var month = now.getMonth() + 1;
@@ -6,7 +7,8 @@ function updateTime(){
     var hour = now.getHours().toString().padStart(2, '0');
     var minute = now.getMinutes().toString().padStart(2, '0');
     var second = now.getSeconds().toString().padStart(2, '0');//自动补0
-    var formattedTime = `${year}年${month}月${day}日 ${hour}:${minute}:${second}`;
+    var formattedTime = language=="zh-CN" ? `${year}年 ${month}月 ${day}日 ${hour}:${minute}:${second}` : 
+    `Year${year} Month${month} Day${day} ${hour}:${minute}:${second}`;
     document.getElementById('time').innerHTML = formattedTime;
 }
 

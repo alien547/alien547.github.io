@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Home</title>
+		<link rel="icon" href="../logo.png" type="image/x-icon">
+		<link rel="stylesheet" href="../base.css">
+		<link rel="stylesheet" href="../home.css">
+		<script src="../base.js"></script>
+		<script>localStorage.setItem("nowIn", "home")</script>
+	</head>
+	<body>
+		<div class="background"></div>
+		<ul class="navigation">
+			<li><a class="active" href="home.html">Home</a></li>
+			<li><a href="todo.html">Todo</a></li>
+			<li><a href="time.html">Time</a></li>
+			<li><a href="about.html">About</a></li>
+		</ul>
+		<select id="language" onchange="changeLanguage()">
+			<option value="en">English</option>
+			<option value="zh-CN">中文</option>
+		</select>
+		<div class="text">Hello!</div>
+	</body>
+</html>

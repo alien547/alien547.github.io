@@ -1,50 +1,60 @@
 .inputTodo{
-    position: relative;
-    top: -600px;
-    float: right;
-    margin-right: 550px;
+    position: absolute;
+    top: 30%;
+    right: 30%;
+    width: 15%;
 }
 .addTodo{
-    position: relative;
-    top: -800px;
-    left: 150px;
-    font-size: 20px;
+    position: absolute;
+    top: -5px;
+    left: 95px;
+    font-size: 100%;
     border-color: #c0c0c0;
     background-color: #e0e0e0;
 }
 #todo{
-    text-align: center;
-    border: none;
-    background-color: transparent;
-    outline: none;
-    font-size: 35px;
+    font-size: 300%;
     max-width: 200px;
+    width: auto;
+    border: none;
+    outline: none;
+    background-color: transparent;
 }
 #todoList{
-    max-height: 500px;
-    max-width: 125px;
-    margin-top: 50px;
-    margin-left: 100px;
+    position: absolute;
+    top: 17.5%;
+    left: 20%;
+    height: 50%;
+    width: 15%;
+    font-size: 200%;
+    margin: 0;
+    padding: 0;
     overflow-y: auto;
     overflow-x: hidden;
-    position: relative;
-    top: -800px;
     list-style-type: none;
 }
 .todos{
-    margin: 1px;
-    float: bottom;
-    border-color: #c0c0c0;
-    height: 50px;
-    width: 100px;
+    height: 25%;
+    width: 80%;
+    margin: 1%;
+    font-size: 100%;
     overflow: hidden;
-    font-size: 15px;
+    border-color: #c0c0c0;
     background-color: #e0e0e0;
 }
+#vquote{
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 150%;
+    font-style: italic;
+    text-decoration: underline;
+}
 #change{
+    font-size: 250%;
     border: none;
     background-color: transparent;
-    font-size: 30px;
 }
 input:hover{
     text-decoration: underline;
