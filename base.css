@@ -47,6 +47,13 @@ select{
     margin: 0;
     background-image: linear-gradient(to bottom right, #b8b8ff, #d8d8ff);
 }
+footer{
+    position: absolute;
+    bottom: 1%;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 130%;
+}
 body, html{
     position: relative;
     height: 100%;

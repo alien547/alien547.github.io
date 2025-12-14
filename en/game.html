@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<title>Game</title>
+		<link rel="icon" href="../logo.png" type="image/x-icon">
+		<link rel="stylesheet" href="../base.css">
+		<link rel="stylesheet" href="../game.css">
+		<script src="../base.js"></script>
+		<script>localStorage.setItem("nowIn", "game")</script>
+	</head>
+	<body>
+		<div class="background"></div>
+		<ul class="navigation">
+			<li><a href="home.html">Home</a></li>
+			<li><a href="todo.html">Todo</a></li>
+			<li><a href="time.html">Time</a></li>
+            <li><a class="active" href="game.html">Game</a></li>
+			<li><a href="tool.html">Tool</a></li>
+			<li><a href="about.html">About</a></li>
+		</ul>
+		<select id="language" onchange="changeLanguage()">
+            <option value="en">English</option>
+			<option value="zh-CN">中文</option>
+		</select>
+        <div class="downloadGame"><a href="../太空入侵(SpaceInvasion).exe" download>SpaceInvasion.exe</a></div>
+		<footer>contact me by QQ at 158663617</footer>
+	</body>
+</html>

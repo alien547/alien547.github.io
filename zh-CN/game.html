@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<title>游戏</title>
+		<link rel="icon" href="../logo.png" type="image/x-icon">
+		<link rel="stylesheet" href="../base.css">
+		<link rel="stylesheet" href="../game.css">
+		<script src="../base.js"></script>
+		<script>localStorage.setItem("nowIn", "game")</script>
+	</head>
+	<body>
+		<div class="background"></div>
+		<ul class="navigation">
+			<li><a href="home.html">主页</a></li>
+			<li><a href="todo.html">待办</a></li>
+			<li><a href="time.html">时间</a></li>
+            <li><a class="active" href="game.html">游戏</a></li>
+			<li><a href="tool.html">工具</a></li>
+			<li><a href="about.html">关于</a></li>
+		</ul>
+		<select id="language" onchange="changeLanguage()">
+			<option value="zh-CN">中文</option>
+			<option value="en">English</option>
+		</select>
+        <div class="downloadGame"><a href="../太空入侵(SpaceInvasion).exe" download>太空入侵.exe</a></div>
+		<footer>与我联系：QQ号 158663617</footer>
+	</body>
+</html>
