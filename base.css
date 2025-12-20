@@ -59,4 +59,8 @@ body, html{
     height: 100%;
     margin: 0;
     font-size: 10px;
+    min-width: 1400px;
+    min-height: 800px;
+    overflow: auto;
+    box-sizing: border-box;
 }
