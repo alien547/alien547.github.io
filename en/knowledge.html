@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<title>知识</title>
+		<link rel="icon" href="../logo.png" type="image/x-icon">
+		<link rel="stylesheet" href="../base.css">
+		<link rel="stylesheet" href="../knowledge.css">
+		<script src="../base.js"></script>
+		<script>localStorage.setItem("nowIn", "knowledge");localStorage.setItem("language", "en")</script>
+	</head>
+	<body>
+		<div class="background"></div>
+		<ul class="navigation">
+			<li><a href="home.html">Home</a></li>
+            <li><a href="todo.html">Todo</a></li>
+            <li><a href="time.html">Time</a></li>
+            <li><a href="game.html">Game</a></li>
+			<li><a href="tool.html">Tool</a></li>
+			<li><a class="active" href="knowledge.html">Knowledge</a></li>
+			<li><a href="about.html">About</a></li>
+		</ul>
+		<select id="language" onchange="changeLanguage()">
+			<option value="en">English</option>
+			<option value="zh-CN">中文</option>
+		</select>
+		<div class="leftText">
+			<math display="block">
+				<msub>
+					<mi>a</mi>
+					<mi>i</mi>
+				</msub>
+				<mo>></mo>
+				<mn>0</mn>
+				<mo>⇒</mo>
+				<munderover>
+					<mo>∑</mo>
+					<mrow>
+						<mi>i</mi>
+						<mo>=</mo>
+						<mn>1</mn>
+					</mrow>
+					<mi>n</mi>
+				</munderover>
+				<msub>
+					<mi>a</mi>
+					<mi>i</mi>
+				</msub>
+				<mo>≥</mo>
+				<mi>n</mi>
+				<mo>·</mo>
+				<mroot>
+					<mrow>
+						<munderover>
+							<mo>∏</mo>
+							<mrow>
+								<mi>i</mi>
+								<mo>=</mo>
+								<mn>1</mn>
+							</mrow>
+							<mi>n</mi>
+						</munderover>
+						<msub>
+							<mi>a</mi>
+							<mi>i</mi>
+						</msub>
+					</mrow>
+					<mi>n</mi>
+				</mroot>
+			</math>
+			<br>
+			<math display="block">
+				<msup>
+					<mi mathvariant="normal">sin</mi>
+					<mn>2</mn>
+				</msup>
+				<mi>θ</mi>
+				<mo>+</mo>
+				<msup>
+					<mi mathvariant="normal">cos</mi>
+					<mn>2</mn>
+				</msup>
+				<mi>θ</mi>
+				<mo>=</mo>
+				<mn>1</mn>
+			</math>
+			<br>
+			<math display="block">
+				<mi>x</mi>
+				<mo>=</mo>
+				<mfrac>
+					<mrow>
+						<mo>-</mo>
+						<mi>b</mi>
+						<mo>±</mo>
+						<msqrt>
+							<mrow>
+								<msup>
+									<mi>b</mi>
+									<mn>2</mn>
+								</msup>
+								<mo>-</mo>
+								<mn>4</mn>
+								<mi>a</mi>
+								<mi>c</mi>
+							</mrow>
+						</msqrt>
+					</mrow>
+					<mrow>
+						<mn>2</mn>
+						<mi>a</mi>
+					</mrow>
+				</mfrac>
+			</math>
+			<br>
+			<math display="block">
+				<mi>a</mi>
+				<mo>=</mo>
+				<msqrt>
+					<mrow>
+						<msup>
+							<mi>b</mi>
+							<mn>2</mn>
+						</msup>
+						<mo>+</mo>
+						<msup>
+							<mi>c</mi>
+							<mn>2</mn>
+						</msup>
+						<mo>-</mo>
+						<mn>2</mn>
+						<mi>b</mi>
+						<mi>c</mi>
+						<mo>·</mo>
+						<mi mathvariant="normal">cos</mi>
+						<mi>α</mi>
+					</mrow>
+				</msqrt>
+			</math>
+			<br>
+			<math display="block">
+				<mfrac>
+					<mi>a</mi>
+					<mrow>
+						<mi mathvariant="normal">sin</mi>
+						<mi>α</mi>
+					</mrow>
+				</mfrac>
+				<mo>=</mo>
+				<mfrac>
+					<mi>b</mi>
+					<mrow>
+						<mi mathvariant="normal">sin</mi>
+						<mi>β</mi>
+					</mrow>
+				</mfrac>
+				<mo>=</mo>
+				<mfrac>
+					<mi>c</mi>
+					<mrow>
+						<mi mathvariant="normal">sin</mi>
+						<mi>γ</mi>
+					</mrow>
+				</mfrac>
+			</math>
+			<br>
+			<math display="block">
+				<msubsup>
+					<mi>A</mi>
+					<mi>n</mi>
+					<mi>m</mi>
+				</msubsup>
+				<mo>=</mo>
+				<mfrac>
+					<mrow>
+						<mi>n</mi>
+						<mo>!</mo>
+					</mrow>
+					<mrow>
+						<mo>(</mo>
+						<mi>n</mi>
+						<mo>-</mo>
+						<mi>m</mi>
+						<mo>)</mo>
+						<mo>!</mo>
+					</mrow>
+				</mfrac>
+			</math>
+			<br>
+			<math display="block">
+				<msubsup>
+					<mi>C</mi>
+					<mi>n</mi>
+					<mi>m</mi>
+				</msubsup>
+				<mo>=</mo>
+				<mfrac>
+					<msubsup>
+						<mi>A</mi>
+						<mi>n</mi>
+						<mi>m</mi>
+					</msubsup>
+					<mrow>
+						<mi>m</mi>
+						<mo>!</mo>
+					</mrow>
+				</mfrac>
+			</math>
+		</div>
+		<footer>contact me by QQ at 158663617</footer>
+	</body>
+</html>
