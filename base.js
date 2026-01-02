@@ -1,3 +1,8 @@
+function setSetting(location, language){
+    localStorage.setItem("nowIn", location);
+    localStorage.setItem("language", language);
+}
+
 function changeLanguage(location){
     var onLanguage = document.getElementById("language");
     var language = onLanguage.options[onLanguage.selectedIndex].value;
