@@ -2,7 +2,7 @@
     position: absolute;
     top: 12.5%;
     left: 50%;
-    transform: translate(-50%);
+    transform: translateX(-50%);
     font-size: 400%;
     color: #000000;
 }

@@ -46,7 +46,7 @@
     position: absolute;
     top: 10%;
     left: 50%;
-    transform: translate(-50%);
+    transform: translateX(-50%);
     font-size: 150%;
     font-style: italic;
     text-decoration: underline;

@@ -2,7 +2,7 @@
     position: absolute;
     top: 12.5%;
     left: 50%;
-    transform: translate(-50%);
+    transform: translateX(-50%);
     font-size: 350%;
     color: #0000ff;
     text-shadow: 0 0 4px #0000ff;
@@ -11,7 +11,7 @@
     position: absolute;
     top: 20%;
     left: 50%;
-    transform: translate(-50%);
+    transform: translateX(-50%);
     font-size: 250%;
     color: #000000;
 }
@@ -19,5 +19,5 @@
     position: absolute;
     top: 30%;
     left: 50%;
-    transform: translate(-50%);
+    transform: translateX(-50%);
 }

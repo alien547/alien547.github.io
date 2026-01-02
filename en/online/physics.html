@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<title>Physics</title>
+		<link rel="icon" href="../../logo.png" type="image/x-icon">
+		<link rel="stylesheet" href="../../base.css">
+		<link rel="stylesheet" href="../../physics.css">
+		<script src="../../base.js"></script>
+        <script src="../../physics.js"></script>
+		<script>localStorage.setItem("nowIn", "online/physics");localStorage.setItem("language", "zh-CN")</script>
+	</head>
+	<body onload="getData()">
+		<div class="background"></div>
+		<ul class="navigation">
+			<li><a href="../home.html">Home</a></li>
+			<li><a href="../todo.html">Todo</a></li>
+			<li><a href="../time.html">Time</a></li>
+			<li><a class="active" href="../game.html">Game</a></li>
+			<li><a href="../tool.html">Tool</a></li>
+			<li><a href="../knowledge.html">Knowledge</a></li>
+			<li><a href="../about.html">About</a></li>
+		</ul>
+		<select id="language" onchange="changeLanguage('../../')">
+            <option value="en">English</option>
+			<option value="zh-CN">中文</option>
+		</select>
+        <button id="startOrEnd" onclick="startOrEndAnimation()">Start/End</button>
+        <button id="stop" onclick="stopAnimation()" disabled>Stop</button>
+        <form class="settings">
+			<label for="x">x:</label>
+            <input type="number" id="x" name="x" onchange="setData()"><br>
+			<label for="y">y:</label>
+            <input type="number" id="y" name="y" onchange="setData()"><br>
+			<label for="wid">wid:</label>
+            <input type="number" id="wid" name="wid" onchange="setData()"><br>
+			<label for="hei">hei:</label>
+            <input type="number" id="hei" name="hei" onchange="setData()"><br>
+			<label for="velX">velX:</label>
+            <input type="number" id="velX" name="velX" onchange="setData()"><br>
+			<label for="velY">velY:</label>
+            <input type="number" id="velY" name="velY" onchange="setData()"><br>
+			<label for="accelX">accelX:</label>
+            <input type="number" id="accelX" name="accelX" onchange="setData()"><br>
+			<label for="accelY">accelY:</label>
+            <input type="number" id="accelY" name="accelY" onchange="setData()"><br>
+			<label for="damping">damping:</label>
+            <input type="number" id="damping" name="damping" onchange="setData()">
+        </form>
+		<div class="feedback">
+			x:<div id="feedbackX"></div>
+			y:<div id="feedbackY"></div>
+			velX:<div id="feedbackVelX"></div>
+			velY:<div id="feedbackVelY"></div>
+		</div>
+		<canvas id="canvas"></canvas>
+		<footer>contact me by QQ at 158663617</footer>
+	</body>
+</html>

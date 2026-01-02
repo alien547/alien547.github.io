@@ -1,7 +1,16 @@
+.onlineGame{
+    position: absolute;
+    list-style-type: none;
+    top: 10%;
+    left: 35%;
+    transform: translateX(-50%);
+    font-size: 250%;
+}
 .downloadGame{
     position: absolute;
+    list-style-type: none;
     top: 10%;
-    left: 50%;
-    transform: translate(-50%);
+    left: 65%;
+    transform: translateX(-50%);
     font-size: 250%;
 }
