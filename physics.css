@@ -29,7 +29,7 @@ canvas{
 }
 .settings{
     position: absolute;
-    left: 4%;
+    left: 5%;
     transform: translateX(-50%);
     top: 25%;
     width: 6%;
@@ -44,6 +44,11 @@ canvas{
     right: 5%;
     transform: translateX(50%);
     top: 25%;
-    width: 6%;
+    width: 7%;
     font-size: 200%;
+    overflow: hidden;
+}
+.feedback #timeSpeed{
+    width: 75%;
+    background-color: #eeeeee;
 }

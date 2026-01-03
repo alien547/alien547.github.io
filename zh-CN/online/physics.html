@@ -10,7 +10,7 @@
         <script src="../../physics.js"></script>
 		<script>setSetting("online/physics", "zh-CN")</script>
 	</head>
-	<body onload="getData()">
+	<body onload="getData()" onunload="cancelAnimationFrame(animationId)">
 		<div class="background"></div>
 		<ul class="navigation">
 			<li><a href="../home.html">主页</a></li>
@@ -27,27 +27,29 @@
 		</select>
         <button id="startOrEnd" onclick="startOrEndAnimation()">开始/终止</button>
         <button id="stop" onclick="stopAnimation()" disabled>暂停</button>
-        <form class="settings">
+        <form class="settings" onchange="setData()">
 			<label for="x">x:</label>
-            <input type="number" id="x" name="x" onchange="setData()"><br>
+            <input type="number" id="x" name="x"><br>
 			<label for="y">y:</label>
-            <input type="number" id="y" name="y" onchange="setData()"><br>
+            <input type="number" id="y" name="y"><br>
 			<label for="wid">宽:</label>
-            <input type="number" id="wid" name="wid" onchange="setData()"><br>
+            <input type="number" id="wid" name="wid"><br>
 			<label for="hei">高:</label>
-            <input type="number" id="hei" name="hei" onchange="setData()"><br>
+            <input type="number" id="hei" name="hei"><br>
 			<label for="velX">x速度:</label>
-            <input type="number" id="velX" name="velX" onchange="setData()"><br>
+            <input type="number" id="velX" name="velX"><br>
 			<label for="velY">y速度:</label>
-            <input type="number" id="velY" name="velY" onchange="setData()"><br>
+            <input type="number" id="velY" name="velY"><br>
 			<label for="accelX">x加速度:</label>
-            <input type="number" id="accelX" name="accelX" onchange="setData()"><br>
+            <input type="number" id="accelX" name="accelX"><br>
 			<label for="accelY">y加速度:</label>
-            <input type="number" id="accelY" name="accelY" onchange="setData()"><br>
+            <input type="number" id="accelY" name="accelY"><br>
 			<label for="damping">动能损耗:</label>
-            <input type="number" id="damping" name="damping" onchange="setData()">
+            <input type="number" id="damping" name="damping">
         </form>
 		<div class="feedback">
+			<label for="timeSpeed">倍速:</label>
+            <input type="number" id="timeSpeed" name="timeSpeed" onchange="changeTimeSpeed()">
 			x:<div id="feedbackX"></div>
 			y:<div id="feedbackY"></div>
 			x速度:<div id="feedbackVelX"></div>

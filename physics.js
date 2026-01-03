@@ -17,6 +17,7 @@ var stats = {
 };
 var settings = ["x", "y", "wid", "hei", "velX", "velY", "accelX", "accelY", "damping"];
 var copyStats, canvas, ctx, maxwid, maxhei;
+var timeSpeed = 1;
 
 function getData(){
     canvas = document.getElementById("canvas");
@@ -30,6 +31,8 @@ function getData(){
             document.getElementById(`${settings[i]}`).value = localSetting;
         }
     }
+    document.getElementById("timeSpeed").value = localStorage.getItem("timeSpeed")||1;
+    timeSpeed = localStorage.getItem("timeSpeed")||1;
     copyStats = { ...stats };//获取参数
     drawFrame();
     returnFeedback()
@@ -50,33 +53,34 @@ function setData(){
 
 function draw(){
     if(!isRunning)return;
-    copyStats.x += copyStats.velX;
-    copyStats.y += copyStats.velY;
-    copyStats.velX += copyStats.accelX;
-    copyStats.velY += copyStats.accelY;
-    if(copyStats.x+copyStats.wid>maxwid){
+    copyStats.x += copyStats.velX*timeSpeed;
+    copyStats.y += copyStats.velY*timeSpeed;
+    copyStats.velX += copyStats.accelX*timeSpeed;
+    copyStats.velY += copyStats.accelY*timeSpeed;
+    if(copyStats.x+copyStats.wid>=maxwid){
         copyStats.x = maxwid-copyStats.wid;
-        copyStats.velX = copyStats.velX*-1*copyStats.damping;
+        copyStats.velX *= -1*copyStats.damping;
     }
-    if(copyStats.x<0){
+    if(copyStats.x<=0){
         copyStats.x = 0;
-        copyStats.velX = copyStats.velX*-1*copyStats.damping;
+        copyStats.velX *= -1*copyStats.damping;
     }
-    if(copyStats.y+copyStats.hei>maxhei){
+    if(copyStats.y+copyStats.hei>=maxhei){
         copyStats.y = maxhei-copyStats.hei;
-        if(copyStats.velY<=copyStats.minVel){
+        if(Math.abs(copyStats.velY)<=Math.abs(copyStats.minVel)){
             inGround = true;
         }
         copyStats.velY = inGround ? copyStats.accelY : copyStats.velY*-1*copyStats.damping;
     }
-    if(copyStats.y<0){
+    if(copyStats.y<=0){
         copyStats.y = 0;
-        copyStats.velY = copyStats.velY*-1*copyStats.damping;
+        copyStats.velY *= -1*copyStats.damping;
     }
-    copyStats.x = Math.round(copyStats.x*100)/100;
-    copyStats.y = Math.round(copyStats.y*100)/100;
-    copyStats.velX = Math.round(copyStats.velX*100)/100;
-    copyStats.velY = Math.round(copyStats.velY*100)/100;//保留小数
+    for(var i=0; i<9; i++){
+        if([0, 1, 4, 5].includes(i)){
+            copyStats[settings[i]] = Math.round(copyStats[settings[i]]*100000)/100000;//保留小数
+        }
+    }
     drawFrame();
     returnFeedback();
     animationId = requestAnimationFrame(draw);
@@ -125,8 +129,17 @@ function stopAnimation(){
 }
 
 function returnFeedback(){
-    document.getElementById("feedbackX").innerHTML = copyStats.x;
-    document.getElementById("feedbackY").innerHTML = copyStats.y;
-    document.getElementById("feedbackVelX").innerHTML = copyStats.velX;
-    document.getElementById("feedbackVelY").innerHTML = copyStats.velY;
+    for(var i=0; i<9; i++){
+        if([0, 1, 4, 5].includes(i)){
+            document.getElementById(`feedback${settings[i].charAt(0).toUpperCase()
+                +settings[i].slice(1)}`).innerHTML = copyStats[settings[i]];
+        }
+    }
+}
+
+function changeTimeSpeed(){
+    var newTimeSpeed = document.getElementById("timeSpeed").value;
+    if(newTimeSpeed==0)return;
+    timeSpeed = newTimeSpeed;
+    localStorage.setItem("timeSpeed", timeSpeed);
 }
