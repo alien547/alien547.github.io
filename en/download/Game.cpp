@@ -4,7 +4,7 @@
 using namespace std;
 
 const int LEN=25, HEI=15;
-int pos_x=LEN/2, pos_y=HEI/2, enemy_x=1, enemy_y=1, time_1=0, time_2=0;
+int pos_x=LEN/2, pos_y=HEI/2, enemy_x=2, enemy_y=2, time_1=0, time_2=0, k=1;
 bool is_enemy=false;
 
 struct enemy{
@@ -18,7 +18,7 @@ void add_enemy(){
 }
 
 void reset(){
-	pos_x=LEN/2, pos_y=HEI/2, enemy_x=2, enemy_y=2, time_1=0, time_2=0;
+	pos_x=LEN/2, pos_y=HEI/2, time_1=0, time_2=0;
     enemies.clear();
     add_enemy();
 }
@@ -31,7 +31,11 @@ void flip(){
 			cout << "GameOver!";
 			Sleep(3000);
 			cout << "  (Enter)";
-			if(getchar()=='\n')reset();
+			if(getchar()=='\n'){
+				reset();
+				flip();
+			}
+			break;
 		}
 	}
 	while(y<HEI){
@@ -57,14 +61,14 @@ void flip(){
 		x=0;
 		cout << endl;
 	}
-	Sleep(100);
+	Sleep(150);
 }
 
 int main(){
 	reset();
 	while(true){
-		time_1++;
-		time_2++;
+		time_1+=k;
+		time_2+=k;
 		if(_kbhit()){
 			char a=_getch();
 	        if(a=='a'&&pos_x>2){
@@ -94,6 +98,7 @@ int main(){
 		}
 		if(time_2>=100){
 			time_2-=100;
+			k*=1.05;
 			add_enemy();
 		}
         flip();
