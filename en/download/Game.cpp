@@ -1,3 +1,4 @@
+#include <fstream>
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -7,17 +8,19 @@
 using namespace std;
 
 const int LEN=21, HEI=11;//地图大小 
-int pos_x, pos_y;//玩家位置 
-double time_1, time_2, k;//敌人生成参数 
+int pos_x, pos_y, display, attacked;//玩家位置&显示时间 
+long long health, max_health, score, max_score, update;//玩家血量&分数&升级所需 
+double enemy_move, enemy_update, k;//敌人生成参数 
+bool run=true;//程序运行参数 
 bool enemies_pos[LEN+1][HEI+1];//标记敌人位置 
 
 struct enemy{
-	int x, y;
+	int x, y, attack;//位置&攻击间隔 
 };
 
 vector<enemy> enemies;
 
-void add_enemy(){
+inline void add_enemy(){
 	int enemy_x, enemy_y;
 	switch(rand()%4){//敌人生成位置随机 
 		case 0:
@@ -37,12 +40,32 @@ void add_enemy(){
 			enemy_y=HEI-1;
 			break;
 	}
-	enemies.push_back(enemy{enemy_x, enemy_y});
+	enemies.push_back(enemy{enemy_x, enemy_y, 0});
 	enemies_pos[enemy_x][enemy_y]=true;
 }
 
-void reset(){
-	pos_x=LEN/2, pos_y=HEI/2, time_1=0.0, time_2=0.0, k=1.0;
+inline void exit(){
+	char a;
+	system("cls");
+	printf("Exit and save data?  (Enter 'Y')");
+	scanf("%c", &a);
+	if(a=='Y'){
+		run=false;
+		ofstream data("data.txt");
+		data << max(score, max_score);
+		data.close();
+	}
+}
+
+inline void reset(){
+	ifstream data("data.txt");
+	if(data.is_open()){
+		data >> max_score;
+	}else{
+		max_score=0;
+	}
+	data.close();
+	pos_x=LEN/2, pos_y=HEI/2, enemy_move=0.0, enemy_update=0.0, k=1.0, max_health=100, health=100, score=0, update=1000, display=0, attacked=0;
 	for(enemy& e : enemies){
 		enemies_pos[e.x][e.y]=false;
 	}
@@ -51,17 +74,27 @@ void reset(){
     Sleep(200);
 }
 
-void flip(){
+inline void flip(){
 	int x=0, y=0;
 	system("cls");
-	if(enemies_pos[pos_x][pos_y]){
-		printf("GameOver!");
-		Sleep(2000);
-		printf("  (Press)");
-		while(_kbhit())_getch();
-		_getch();
-		reset();
-		return;
+	for(enemy& e : enemies){
+		if(e.x==pos_x&&e.y==pos_y&&e.attack==0){
+			e.attack+=10;
+			attacked=10;
+			health-=20;
+			if(health<=0){
+				ofstream data("data.txt");
+				data << max(score, max_score);
+				data.close();
+				printf("GameOver!");
+				Sleep(2000);
+				printf("  (Press)");
+				while(_kbhit())_getch();
+				_getch();
+				reset();
+				return;
+			}
+		}
 	}
 	while(y<=HEI){
 		while(x<=LEN){
@@ -74,6 +107,18 @@ void flip(){
 			}else{
 				printf(" ");//无 
 			}
+			if(x==LEN){
+				if(y==2){
+					printf("     Health: %d/%d", health, max_health);
+				}else if(y==4){
+					printf("     Score: %d", score);
+				}else if(y==5){
+					printf("     MaxScore: %d", max_score);
+				}else if(display>0&&y==7){
+					display--;
+					printf("     Updated!");
+				}
+			}
 			++x;
 		}
 		++y;
@@ -84,6 +129,11 @@ void flip(){
 }
 
 int main(){
+	printf("Welcome to the game! Enjoy yourself!\nAnd welcome to visit my website alien547.github.io.\n\nKeys: W, A, S, D, Esc and Enter.");
+	Sleep(1000);
+	printf("  (Press)");
+	while(_kbhit())_getch();
+	_getch();
 	srand(time(nullptr));//随机数初始化 
 	for(int i=0; i<=LEN; i++){
     	for(int j=0; j<=HEI; j++){
@@ -91,12 +141,35 @@ int main(){
 		}
 	}
 	reset();
-	while(true){
-		time_1+=k;
-		time_2+=k;
-		if(_kbhit()){
-			char a=_getch();//玩家移动 
-	        if(a=='a'&&pos_x>1){
+	while(run){
+		enemy_move+=k;
+		enemy_update+=k;
+		if(attacked>0){
+			attacked--;
+		}else{
+			attacked=0;
+			if(health<max_health){
+				health++;
+			}else{
+				health=max_health;
+			}
+		}
+		score+=k*10;
+		if(score>max_score){
+			max_score=score;
+		}
+		for(enemy& e : enemies){
+			if(e.attack>0){
+				e.attack-=1;
+			}else{
+				e.attack=0;
+			}
+		}
+		if(_kbhit()){//玩家操作 
+			char a=_getch();
+			if(a==27){//退出（Esc键） 
+				exit();
+			}else if(a=='a'&&pos_x>1){//移动 
 	            pos_x-=1;
 	        }else if(a=='d'&&pos_x<LEN-1){
 	            pos_x+=1;
@@ -106,8 +179,8 @@ int main(){
 	            pos_y+=1;
 	        }
 		}
-		if(time_1>=5.0){
-			time_1-=5.0;//敌人移动 
+		if(enemy_move>=5.0){//敌人移动 
+			enemy_move-=5.0;
 			for(enemy& e : enemies){
 				enemies_pos[e.x][e.y]=false;
 			}
@@ -127,12 +200,20 @@ int main(){
 				enemies_pos[e.x][e.y]=true;
 			}
 		}
-		if(time_2>=100.0){
-			time_2-=100.0;//敌人刷新&升级 
+		if(enemy_update>=100.0){//敌人刷新&升级 
+			enemy_update-=100.0;
 			k*=1.05;
 			add_enemy();
 		}
+		if(score>=update){//玩家升级 
+			update*=2.1;
+			display+=10;
+			max_health+=20;
+			health=max_health;
+		}
         flip();//刷新屏幕 
     }
+    system("cls");
+    printf("Thank you for playing!\n");
 	return 0;
 }
