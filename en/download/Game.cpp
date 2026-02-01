@@ -330,5 +330,6 @@ int main(){
     }
     system("cls");
     printf("Thank you for playing!\n");
+    Sleep(3000);
 	return 0;
 }
