@@ -1,4 +1,7 @@
-//我的网站：alien547.github.io 
+/*
+我的网站：alien547.github.io 
+我的QQ：3882104862 
+*/
 #include <fstream>
 #include <iostream>
 #include <cstdlib>
@@ -55,7 +58,7 @@ inline void add_enemy(){
 			enemy_y=HEI-1;
 			break;
 	}
-	enemies.push_back(enemy{enemy_x, enemy_y, 0, 5});
+	enemies.push_back(enemy{enemy_x, enemy_y, 0, 6});
 	enemies_pos[enemy_x][enemy_y]=true;
 }
 
@@ -84,7 +87,7 @@ inline void reset(){
 	data.close();
 	pos_x=LEN/2, pos_y=HEI/2, direction='w', max_health=100, health=100, score=0, upgrade=1000;
 	display=0, attacked=0, attacked=0, teleport=false, gun=false, teleport_cool=0, ammo=6, gun_cool=0, load_gun=false;
-	enemy_move=0.0, enemy_upgrade=0.0, k=1.0, enemy_health=-1;
+	enemy_move=0.0, enemy_upgrade=0.0, k=1.0, enemy_health=0;
 	talk_1="我：已到达感染区，请求指令。\n指挥官：清除该区域的感染者。\n我：收到。";
 	talk_2="我：..请...求....支......援.........[撕咬声]";
 	for(bullet& b : bullets){
@@ -97,6 +100,26 @@ inline void reset(){
     enemies.clear();
     add_enemy();
     Sleep(200);
+}
+
+inline void talking(string talk){
+	short times_1=3, times_2=3;
+	printf("\n");
+	while(times_1--){
+		Beep(440, 1500);
+		Sleep(1000);
+	}
+	printf("[通讯已连接]\n");
+	for(int i=0; i<talk.length(); i++){
+		Beep(350, 100);
+		printf("%c", talk[i]);
+	}
+	Sleep(1500);
+	printf("\n[通讯已中断]");
+	while(times_2--){
+		Beep(540, 1000);
+		Sleep(250);
+	}
 }
 
 inline void flip(){//刷新屏幕 
@@ -135,7 +158,7 @@ inline void flip(){//刷新屏幕
 				}else if(display>0&&y==8){
 					display--;
 					printf("     %s", information.c_str());
-				}else if(enemy_health!=-1&&y==9){
+				}else if(enemy_health!=0&&y==9){
 					printf("     敌人血量：%d", enemy_health);
 				}
 			}
@@ -149,28 +172,7 @@ inline void flip(){//刷新屏幕
 		ofstream data("data.txt");
 		data << max(score, max_score);
 		data.close();
-		
-		printf("\n");
-		Beep(440, 1500);
-		Sleep(1000);
-		Beep(440, 1500);
-		Sleep(1000);
-		Beep(440, 1500);
-		printf("[通讯已连接]\n");
-		Sleep(300);
-		for(int i=0; i<talk_2.length(); i++){
-			Beep(350, 100);
-			printf("%c", talk_2[i]);
-		}
-		Sleep(300);
-		printf("\n[通讯已中断]");
-		Beep(540, 1000);
-		Sleep(250);
-		Beep(540, 1000);
-		Sleep(250);
-		Beep(540, 1000);
-		Sleep(100);
-		
+		talking(talk_2);
 		printf("\n\n游戏结束！");
 		Sleep(2000);
 		printf("  （按下任意键）");
@@ -202,11 +204,22 @@ inline void player_operate(){//玩家操作
 	}else if(attacke==0&&a=='j'){
 		for(enemy& e : enemies){
 		    if((e.x==pos_x-1&&direction=='a')||(e.x==pos_x+1&&direction=='d')||(e.y==pos_y-1&&direction=='w')||(e.y==pos_y+1&&direction=='s')){
+		    	enemies_pos[e.x][e.y]=false;
+		    	if(direction=='a'){
+		    		e.x=max(e.x-1, 1);
+				}else if(direction=='d'){
+					e.x=min(e.x+1, LEN-1);
+				}else if(direction=='w'){
+					e.y=max(e.y-1, 1);
+				}else if(direction=='s'){
+					e.y=min(e.y+1, HEI-1);
+				}
+				enemies_pos[e.x][e.y]=true;
 		    	attacke=4;
-			    e.health--;
+			    e.health=max(e.health-1, 0);
 			    enemy_health=e.health;
 			    break;
-			}
+			} 
 		}
 	}else if(teleport&&teleport_cool>=50&&a=='l'){//瞬移 
 	    teleport_cool-=50;
@@ -233,7 +246,7 @@ inline void player_operate(){//玩家操作
 inline void player_update(){
 	attacke=max(attacke-1, 0);
 	attacked=max(attacked-1, 0);
-	if(attacked==0){
+	if(attacked==0&&health>0){
 		health=min(health+1, max_health);
 	}
 	score+=k*10;
@@ -246,12 +259,12 @@ inline void player_update(){
 			ammo+=6;
 		}
 	}
-	if(!teleport&&score>1000){
+	if(!teleport&&score>2000){
 		teleport=true;
 		display=15;
 		information="新技能！（瞬移[l]）";
 		MessageBeep(MB_ICONINFORMATION);
-	}else if(!gun&&score>2000){
+	}else if(!gun&&score>3000){
 		gun=true;
 		display=15;
 		information="新武器！（手枪[k]）";
@@ -272,14 +285,14 @@ inline void enemy_update(){
 	enemy_move+=k;
 	enemy_upgrade+=k;
 	for(enemy& e : enemies){
-		if(e.health<=0){
-			score+=k*250.0;
+		if(e.health==0){
+			score+=k*100.0;
 			enemies_pos[e.x][e.y]=false;
 		}else{
 			if(e.x==pos_x&&e.y==pos_y&&e.attack==0){
 				e.attack=10;
 				attacked=15;
-				health-=20;
+				health-=15;
 			}
 			e.attack=max(e.attack-1, 0);
 			new_enemies.push_back(e);
@@ -307,8 +320,8 @@ inline void enemy_update(){
 			enemies_pos[e.x][e.y]=true;
 		}
 	}
-	if(enemy_upgrade>=30.0){//敌人刷新&升级 
-		enemy_upgrade-=30.0;
+	if(enemy_upgrade>=50.0){//敌人刷新&升级 
+		enemy_upgrade-=50.0;
 		k*=1.02;
 		add_enemy();
 	}
@@ -350,7 +363,7 @@ inline void bullet_update(){
 }
 
 int main(){
-	printf("欢迎来到这个游戏！游戏愉快！\n也欢迎你来到我的网站 alien547.github.io。\n\n按键: W，A，S，D，Esc，Enter。");
+	printf("欢迎来到这个游戏！游戏愉快！\n也欢迎你来到我的网站 alien547.github.io。\n游戏有bug或有改进建议可联系我，QQ：3882104862\n\n按键: W，A，S，D，Esc，Enter。");
 	Sleep(1000);
 	printf("  （按下任意键）");
 	while(_kbhit())_getch();
@@ -365,30 +378,10 @@ int main(){
 	}
 	reset();
 	flip();
-	printf("\n");
-	Beep(440, 1500);
-	Sleep(1000);
-	Beep(440, 1500);
-	Sleep(1000);
-	Beep(440, 1500);
-	printf("[通讯已连接]\n");
-	Sleep(300);
-	for(int i=0; i<talk_1.length(); i++){
-		Beep(350, 100);
-		printf("%c", talk_1[i]);
-	}
-	Sleep(300);
-	printf("\n[通讯已中断]");
-	Beep(540, 1000);
-	Sleep(250);
-	Beep(540, 1000);
-	Sleep(250);
-	Beep(540, 1000);
-	Sleep(100);
+	talking(talk_1);
 	display=15;
 	information="新武器！（刀[j]）";
 	MessageBeep(MB_ICONINFORMATION);
-	
 	while(run){
 		player_update();
 		enemy_update();
@@ -398,7 +391,6 @@ int main(){
 		}
         flip();
     }
-
     system("cls");
     printf("感谢你的游玩！\n");
     Sleep(3000);
