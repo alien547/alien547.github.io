@@ -6,3 +6,11 @@
     font-size: 400%;
     color: #000000;
 }
+.tip{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 400%;
+    color: #6666dd;
+}
