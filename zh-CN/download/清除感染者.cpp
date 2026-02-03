@@ -4,6 +4,7 @@
 */
 #include <fstream>
 #include <iostream>
+#include <sstream>
 #include <cstdlib>
 #include <ctime>
 #include <vector>
@@ -124,50 +125,52 @@ inline void talking(string talk){
 
 inline void flip(){//刷新屏幕 
 	short x=0, y=0;
+	stringstream ss;//通过字符串流来减少屏幕闪烁 
 	system("cls");
 	while(y<=HEI){
 		while(x<=LEN){
 			if((x==0||x==LEN)&&(y==0||y==HEI)){
-				printf("#");//墙 
+				ss << "+";//墙 
 			}else if(x==pos_x&&y==pos_y){
-				printf("I");//玩家 
+				ss << "I";//玩家 
 			}else if(enemies_pos[x][y]){
-				printf("E");//敌人 
+				ss << "E";//敌人 
 			}else if(bullets_pos[x][y]){
-				printf("'");//子弹 
+				ss << "'";//子弹 
 			}else{
-				printf(" ");//无 
+				ss << " ";//无 
 			}
 			if(x==LEN){
 				if(y==1){
-					printf("     方向：%c", direction);
+					ss << "     方向：" << direction;
 				}else if(y==2){
-					printf("     血量：%d/%d", health, max_health);
+					ss << "     血量：" << health << '/' << max_health;
 				}else if(y==3){
-					printf("     分数：%d", score);
+					ss << "     分数：" << score;
 				}else if(y==4){
-					printf("     最高分：%d", max_score);
+					ss << "     最高分：" << max_score;
 				}else if(teleport&&y==5){
-					printf("     瞬移：%d%%", teleport_cool);
+					ss << "     瞬移：" << teleport_cool << '%';
 				}else if(gun&&y==6){
 					if(load_gun){
-						printf("     装填：%d%%", gun_cool);
+						ss << "     装填：" << gun_cool << '%';
 					}else{
-						printf("     弹药：%d", ammo);
+						ss << "     弹药：" << ammo;
 					}
 				}else if(display>0&&y==8){
 					display--;
-					printf("     %s", information.c_str());
+					ss << "     " << information;
 				}else if(enemy_health!=0&&y==9){
-					printf("     敌人血量：%d", enemy_health);
+					ss << "     敌人血量：" << enemy_health;
 				}
 			}
 			++x;
 		}
 		++y;
 		x=0;
-		printf("\n");
+		ss << '\n';
 	}
+	cout << ss.str();
 	if(health<=0){
 		ofstream data("data.txt");
 		data << max(score, max_score);
@@ -182,7 +185,7 @@ inline void flip(){//刷新屏幕
 		reset();
 		return;
 	}
-	Sleep(150);//控制刷新频率 
+	Sleep(110);//控制刷新频率 
 }
 
 inline void player_operate(){//玩家操作 
@@ -249,7 +252,7 @@ inline void player_update(){
 	if(attacked==0&&health>0){
 		health=min(health+1, max_health);
 	}
-	score+=k*10;
+	score+=k*10.0;
 	max_score=max(max_score, score);
 	teleport_cool=min(teleport_cool+4, 100);
 	if(load_gun){
@@ -298,9 +301,9 @@ inline void enemy_update(){
 			new_enemies.push_back(e);
 		}
 	}
-	enemies=new_enemies;
-	if(enemy_move>=5.0){//敌人移动 
-		enemy_move-=5.0;
+	enemies.swap(new_enemies);
+	if(enemy_move>=7.0){//敌人移动 
+		enemy_move-=7.0;
 		for(enemy& e : enemies){
 			enemies_pos[e.x][e.y]=false;
 		}
@@ -320,8 +323,8 @@ inline void enemy_update(){
 			enemies_pos[e.x][e.y]=true;
 		}
 	}
-	if(enemy_upgrade>=50.0){//敌人刷新&升级 
-		enemy_upgrade-=50.0;
+	if(enemy_upgrade>=70.0){//敌人刷新&升级 
+		enemy_upgrade-=70.0;
 		k*=1.02;
 		add_enemy();
 	}
@@ -329,7 +332,6 @@ inline void enemy_update(){
 
 inline void bullet_update(){
 	vector<bullet> new_bullets;
-	vector<enemy> new_enemies;
 	for(bullet& b : bullets){
 		bullets_pos[b.x][b.y]=false;
 	}
@@ -346,12 +348,14 @@ inline void bullet_update(){
 	}
 	for(bullet& b : bullets){
 		bool hit=false;
-		for(enemy& e : enemies){
-			if(b.x==e.x&&b.y==e.y){
-				e.health=max(e.health-1, 0);
-				enemy_health=e.health;
-				hit=true;
-				break;
+		if(enemies_pos[b.x][b.y]){
+			for(enemy& e : enemies){
+				if(b.x==e.x&&b.y==e.y){
+					e.health=max(e.health-1, 0);
+					enemy_health=e.health;
+					hit=true;
+					break;
+				}
 			}
 		}
 		if(!hit&&0<b.x&&b.x<LEN&&0<b.y&&b.y<HEI){
@@ -359,7 +363,7 @@ inline void bullet_update(){
 			bullets_pos[b.x][b.y]=true;
 		}
 	}
-	bullets=new_bullets;
+	bullets.swap(new_bullets);
 }
 
 int main(){
