@@ -1,0 +1,16 @@
+.tip{
+	position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 400%;
+    color: #555555;
+}
+a{
+	position: absolute;
+    top: 33%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 400%;
+	text-decoration: none;
+}
