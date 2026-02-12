@@ -1,19 +1,19 @@
 .title{
 	position: absolute;
-    top: 2%;
+    top: 10%;
     left: 50%;
     transform: translateX(-50%);
     font-size: 45px;
 }
 .input{
 	position: absolute;
-    top: 10%;
+    top: 18%;
     left: 50%;
     transform: translateX(-50%);
 }
 #messages{
 	position: absolute;
-    top: 15%;
+    top: 23%;
     left: 50%;
     transform: translateX(-50%);
 	border:1px solid #555588;
