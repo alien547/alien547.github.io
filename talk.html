@@ -2,10 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>极简消息墙</title>
+  <title>消息墙 · GitHub Pages + Vercel</title>
 </head>
 <body>
-  <h1>💬 极简消息墙（不保存，仅内存）</h1>
+  <h1>💬 前后端分离消息墙（GitHub Pages + Vercel）</h1>
   <div>
     <input id="username" placeholder="昵称" value="匿名" />
     <input id="message" placeholder="说点什么..." />
@@ -14,10 +14,9 @@
   <div id="messages" style="border:1px solid #ccc; height:300px; overflow:auto; padding:10px; margin-top:10px;"></div>
 
   <script>
-    // 替换成你的 Worker 地址
-    const WORKER_URL = 'https://github-api.18965565726.workers.dev/';
+    // ⚠️ 这里改成你的 Vercel 后端域名（不要末尾斜杠）
+    const WORKER_URL = 'https://alien547-wall-api.vercel.app/';
 
-    // 显示一条消息
     function displayMessage(msg) {
       const div = document.createElement('div');
       div.style.margin = '5px 0';
@@ -25,38 +24,37 @@
       document.getElementById('messages').appendChild(div);
     }
 
-    // 轮询获取所有消息
     async function pollMessages() {
       try {
-        const res = await fetch(`${WORKER_URL}/messages`);
+        const res = await fetch(`${WORKER_URL}/api/messages`);
         const messages = await res.json();
         const container = document.getElementById('messages');
-        container.innerHTML = ''; // 简单粗暴，直接清空重绘
+        container.innerHTML = '';
         messages.forEach(displayMessage);
       } catch (e) {
         console.error('拉取失败', e);
       }
     }
 
-    // 发送消息
     async function sendMessage() {
-      const user = document.getElementById('username').value.trim() || '匿名';
-      const text = document.getElementById('message').value.trim();
-      if (!text) return;
-      await fetch(`${WORKER_URL}/send`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ user, text }),
-      });
-      document.getElementById('message').value = '';
-      // 发送后立即拉取一次（不用等轮询）
-      pollMessages();
+      try {
+        const user = document.getElementById('username').value.trim() || '匿名';
+        const text = document.getElementById('message').value.trim();
+        if (!text) return;
+        await fetch(`${WORKER_URL}/api/messages`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ user, text }),
+        });
+        document.getElementById('message').value = '';
+        pollMessages();
+      } catch (e) {
+        console.error('发送失败', e);
+        alert('发送失败，请检查控制台');
+      }
     }
 
-    // 每2秒轮询一次
     setInterval(pollMessages, 2000);
-
-    // 绑定事件
     window.onload = () => {
       pollMessages();
       document.getElementById('send').onclick = sendMessage;
