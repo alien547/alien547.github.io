@@ -1,0 +1,25 @@
+.title{
+	position: absolute;
+    top: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 45px;
+}
+.input{
+	position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#messages{
+	position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+	border:1px solid #555588;
+	height:75%;
+	width: 95%;
+	overflow:auto;
+	padding:10px;
+	background-color: #dddddd;
+}

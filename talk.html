@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <title>论坛</title>
+        <link rel="stylesheet" href="base.css">
+        <link rel="stylesheet" href="talk.css">
+        <script src="/base.js"></script>
+        <script src="talk.js"></script>
+        <script>setSetting("about", "/")</script>
+    </head>
+    <body onload="getInfo()">
+        <div class="background"></div>
+        <div class="title">论坛</div>
+        <div class="input">
+            <input id="username" oninput="setInfo()" placeholder="昵称" value="匿名" />
+            <input id="message" oninput="setInfo()" placeholder="说点什么..." />
+            <button id="send">发送</button>
+        </div>
+        <div id="messages"></div>
+    </body>
+</html>
