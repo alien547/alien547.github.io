@@ -23,7 +23,7 @@ function displayMessage(msg){
 
 async function pollMessages(){
     try{
-        const res = await fetch(`${WORKER_URL}/api.php`);
+        const res = await fetch(`${WORKER_URL}/api/messages`);
         const messages = await res.json();
         const container = document.getElementById('messages');
         container.innerHTML = '';
@@ -38,7 +38,7 @@ async function sendMessage(){
         const user = document.getElementById('username').value.trim() || '匿名';
         const text = document.getElementById('message').value.trim();
         if(!text)return;
-        await fetch(`${WORKER_URL}/api.php`, {
+        await fetch(`${WORKER_URL}/api/messages`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({ user, text }),
