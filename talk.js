@@ -1,4 +1,4 @@
-const WORKER_URL = 'https://deno-backend.alien547.deno.net';
+const WORKER_URL = 'https://alien547.eu.org';
 
 function getInfo(){
     username = localStorage.getItem("username");
