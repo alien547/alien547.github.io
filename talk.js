@@ -51,7 +51,7 @@ async function sendMessage(){
     }
 }
 
-setInterval(pollMessages, 2000);
+setInterval(pollMessages, 10000);
 window.onload = () => {
     pollMessages();
     document.getElementById('send').onclick = sendMessage;

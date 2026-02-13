@@ -1,11 +1,21 @@
 <!DOCTYPE html>
-<html>
-<body>
-  <script>
-    fetch('https://deno-backend.alien547.deno.net/api/messages')
-      .then(res => res.json())
-      .then(data => console.log('成功:', data))
-      .catch(err => console.error('失败:', err));
-  </script>
-</body>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <title>论坛</title>
+        <link rel="stylesheet" href="base.css">
+        <link rel="stylesheet" href="talk.css">
+        <script src="talk.js"></script>
+    </head>
+    <body onload="getInfo()">
+        <div class="background"></div>
+        <div class="title">论坛</div>
+        <div class="input">
+            <input id="username" oninput="setInfo()" placeholder="昵称" value="匿名" />
+            <input id="message" oninput="setInfo()" placeholder="说点什么..." />
+            <button id="send">发送</button>
+        </div>
+        <div id="messages"></div>
+        <footer>与我联系：QQ号 158663617</footer>
+    </body>
 </html>
