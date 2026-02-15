@@ -1,4 +1,4 @@
-const WORKER_URL = 'https://alien547.eu.org';
+const WORKER_URL = 'https://alien547.us.ci';
 
 function getInfo(){
     username = localStorage.getItem("username");
