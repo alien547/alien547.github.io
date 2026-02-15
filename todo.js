@@ -104,12 +104,10 @@ function getQuote(){
     if(shouldChangeQuote){
         var index = Math.floor(Math.random()*vquotes.length);//随机获取一句名言警句
         localStorage.setItem("quoteIndex", index);
-        var vquote = vquotes[index];
-        document.getElementById("vquote").innerHTML = vquote;
     }else{
         localStorage.setItem("changeQuote", true);
-        var index = localStorage.getItem("quoteIndex");
-        var vquote = vquotes[index];
-        document.getElementById("vquote").innerHTML = vquote;
+        var index = localStorage.getItem("quoteIndex") || Math.floor(Math.random()*vquotes.length);
     }
+    var vquote = vquotes[index];
+    document.getElementById("vquote").innerHTML = vquote;
 }

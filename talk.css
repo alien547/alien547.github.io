@@ -3,7 +3,14 @@
     top: 2%;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 45px;
+    font-size: 400%;
+}
+.back{
+	position: absolute;
+    top: 4%;
+    left: 70%;
+    font-size: 250%;
+    transform: translateX(-50%);
 }
 .input{
 	position: absolute;
