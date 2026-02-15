@@ -17,9 +17,21 @@ function setInfo(){
 function displayMessage(msg) {
     const div = document.createElement('div');
     div.style.margin = '5px 0';
-    // 如果存在 hash_id，显示在用户名后
-    const hashDisplay = msg.hash_id ? ` [${msg.hash_id}]` : '';
-    div.innerHTML = `<strong>${msg.user || '匿名'}${hashDisplay}</strong> ${new Date(msg.timestamp).toLocaleTimeString()}<br>${msg.text}`;
+
+    // 格式化日期时间
+    const dateStr = new Date(msg.timestamp).toLocaleString('zh-CN', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    });
+
+    // 显示哈希标识（如果存在）
+    const hashDisplay = msg.hash_id ? ` [ID：${msg.hash_id}]` : '';
+
+    div.innerHTML = `<strong>${msg.user || '匿名'}${hashDisplay}</strong> ${dateStr}<br>${msg.text}`;
     document.getElementById('messages').appendChild(div);
 }
 
