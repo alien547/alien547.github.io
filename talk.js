@@ -18,7 +18,7 @@ function displayMessage(msg){
     const div = document.createElement('div');
     div.style.margin = '5px 0';
     div.innerHTML = `<strong>${msg.user || '匿名'}</strong> ${new Date(msg.timestamp).toLocaleTimeString()}<br>${msg.text}`;
-  document.getElementById('messages').appendChild(div);
+    document.getElementById('messages').appendChild(div);
 }
 
 async function pollMessages(){
