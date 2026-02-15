@@ -14,10 +14,12 @@ function setInfo(){
     localStorage.setItem("message", message);
 }
 
-function displayMessage(msg){
+function displayMessage(msg) {
     const div = document.createElement('div');
     div.style.margin = '5px 0';
-    div.innerHTML = `<strong>${msg.user || '匿名'}</strong> ${new Date(msg.timestamp).toLocaleTimeString()}<br>${msg.text}`;
+    // 如果存在 ip 字段，显示在用户名旁边（例如：用户名 (IP: xxx.xxx.xxx.xxx)）
+    const ipDisplay = msg.ip ? ` (IP: ${msg.ip})` : '';
+    div.innerHTML = `<strong>${msg.user || '匿名'}${ipDisplay}</strong> ${new Date(msg.timestamp).toLocaleTimeString()}<br>${msg.text}`;
     document.getElementById('messages').appendChild(div);
 }
 
