@@ -1,4 +1,4 @@
-const WORKER_URL = 'https://api.alien547.us.ci';
+const WORKER_URL = 'https://alien547.us.ci';
 
 function getInfo(){
     username = localStorage.getItem("username");
