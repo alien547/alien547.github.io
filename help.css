@@ -1,0 +1,23 @@
+.message{
+	position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #000000;
+}
+.back{
+	position: absolute;
+    top: 4%;
+    left: 80%;
+    font-size: 250%;
+    transform: translateX(-50%);
+}
+.title{
+    font-size: 450%;
+}
+.content{
+    font-size: 350%;
+}
+.text{
+    font-size: 275%;
+}

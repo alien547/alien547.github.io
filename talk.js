@@ -61,11 +61,11 @@ async function sendMessage(){
         pollMessages();
     }catch(e){
         console.error('发送失败', e);
-        alert('发送失败，请稍后重试');
+        alert('发送失败，请不要在同一局域网频繁发送或刷新');
     }
 }
 
-setInterval(pollMessages, 10000);
+setInterval(pollMessages, 15000);
 window.onload = () => {
     getInfo();
     pollMessages();
