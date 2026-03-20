@@ -1,0 +1,15 @@
+.images{
+    position: absolute;
+    list-style-type: none;
+    top: 15%;
+    left: 20%;
+    transform: translateX(-50%);
+}
+.games{
+    position: absolute;
+    list-style-type: none;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 200%;
+}
