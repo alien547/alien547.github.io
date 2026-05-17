@@ -58,7 +58,7 @@ async function sendMessage(){
             body: JSON.stringify({ user, text }),
         });
         document.getElementById('message').value = '';
-        localStorage.setItem("message", "");
+        localStorage.setItem("message", "message");
         pollMessages();
     }catch(e){
         console.error('发送失败', e);
