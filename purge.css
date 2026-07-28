@@ -5,3 +5,10 @@
     left: 20%;
     transform: translateX(-50%);
 }
+.link{
+    position: absolute;
+    list-style-type: none;
+    top: 25%;
+    right: 30%;
+    transform: translateX(-50%);
+}
