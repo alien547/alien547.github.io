@@ -10,5 +10,6 @@
     list-style-type: none;
     top: 25%;
     right: 30%;
+    font-size: 180%;
     transform: translateX(-50%);
 }
