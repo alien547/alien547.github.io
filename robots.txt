@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://alien547.pages.dev/sitemap.xml

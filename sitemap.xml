@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- 语言跳转首页 -->
+  <url>
+    <loc>https://alien547.pages.dev/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- 中文页面 -->
+  <url>
+    <loc>https://alien547.pages.dev/zh-CN/home.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alien547.pages.dev/en/home.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://alien547.pages.dev/zh-CN/home.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://alien547.pages.dev/zh-CN/todo.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://alien547.pages.dev/zh-CN/time.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://alien547.pages.dev/zh-CN/game.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://alien547.pages.dev/zh-CN/purge.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alien547.pages.dev/zh-CN/online/physics.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://alien547.pages.dev/zh-CN/tool.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://alien547.pages.dev/zh-CN/knowledge.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://alien547.pages.dev/zh-CN/about.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- 英文页面 -->
+  <url>
+    <loc>https://alien547.pages.dev/en/home.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://alien547.pages.dev/en/home.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://alien547.pages.dev/zh-CN/home.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://alien547.pages.dev/en/todo.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://alien547.pages.dev/en/time.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://alien547.pages.dev/en/game.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://alien547.pages.dev/en/purge.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alien547.pages.dev/en/online/physics.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://alien547.pages.dev/en/tool.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://alien547.pages.dev/en/knowledge.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://alien547.pages.dev/en/about.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- 双语共用页面 -->
+  <url>
+    <loc>https://alien547.pages.dev/talk.html</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alien547.pages.dev/help.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+</urlset>
