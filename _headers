@@ -1,15 +1,15 @@
-/game/purge/purge.data
+/zh-CN/online/purge.data
   Content-Type: application/octet-stream
   Content-Encoding: br
   Cache-Control: public, max-age=3600
 
-/game/purge/purge.wasm
+/zh-CN/online/purge.wasm
   Content-Type: application/wasm
   Cache-Control: public, max-age=3600
 
-/game/purge/purge.js
+/zh-CN/online/purge.js
   Content-Type: application/javascript
   Cache-Control: public, max-age=3600
 
-/game/purge/purge.html
+/zh-CN/online/purge.html
   Cache-Control: public, max-age=0, must-revalidate
