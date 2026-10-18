@@ -13,3 +13,9 @@
 
 /zh-CN/online/purge.html
   Cache-Control: public, max-age=0, must-revalidat
+
+/*
+
+  Cross-Origin-Opener-Policy: same-origin
+
+  Cross-Origin-Embedder-Policy: require-corp
